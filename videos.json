@@ -1,0 +1,109 @@
+{
+    "videos": [
+      {
+        "id": 1,
+        "category": "kriminologi",
+        "title": "Criminology 101 - Pengantar Kriminologi",
+        "description": "",
+        "youtubeId": "txS-6F2iHG0"
+      },
+      {
+        "id": 2,
+        "category": "kriminologi",
+        "title": "Criminology 101 - Objek Studi Kriminologi",
+        "description": "",
+        "youtubeId": "9yEruyD0GBE"
+      },
+      {
+        "id": 3,
+        "category": "kriminologi",
+        "title": "Aliran Pemikiran dalam Kriminologi",
+        "description": "",
+        "youtubeId": "Mv5btTZ78Bc"
+      },
+      {
+        "id": 4,
+        "category": "kriminologi",
+        "title": "Criminology 101 - Aliran Pemikiran Positivis",
+        "description": "",
+        "youtubeId": "EPASDP6mUUo"
+      },
+      {
+        "id": 5,
+        "category": "kriminologi",
+        "title": "Teori Labelling #kriminologi",
+        "description": "",
+        "youtubeId": "-6jJkXZGjXo"
+      },
+      {
+        "id": 6,
+        "category": "opini",
+        "title": "Money Laundry",
+        "description": "",
+        "youtubeId": "CUZRw8J8h0s"
+      },
+      {
+        "id": 7,
+        "category": "opini",
+        "title": "Pajak & Filantropi",
+        "description": "",
+        "youtubeId": "aqDiTcvO7Bw"
+      },
+      {
+        "id": 8,
+        "category": "opini",
+        "title": "Mustikarasa",
+        "description": "",
+        "youtubeId": "sFk0vgzQmbo"
+      },
+      {
+        "id": 9,
+        "category": "opini",
+        "title": "Demokrasi",
+        "description": "",
+        "youtubeId": "s8emY5ITe6A"
+      },
+      {
+        "id": 10,
+        "category": "opini",
+        "title": "Marxisme",
+        "description": "",
+        "youtubeId": "SW21jh7Nvmo"
+      },
+      {
+        "id": 11,
+        "category": "psikologi",
+        "title": "Gangguan Kepribadian dalam 3 Klaster",
+        "description": "",
+        "youtubeId": "lG3UX4CBRxo"
+      },
+      {
+        "id": 12,
+        "category": "psikologi",
+        "title": "Kenapa Gangguan Kepribadian?",
+        "description": "",
+        "youtubeId": "2I3p1vVSThY"
+      },
+      {
+        "id": 13,
+        "category": "psikologi",
+        "title": "Gangguan Kepribadian vs Ganngguan Mental",
+        "description": "",
+        "youtubeId": "Azrm8Cl44gY"
+      },
+      {
+        "id": 14,
+        "category": "psikologi",
+        "title": "Sebab NPD",
+        "description": "",
+        "youtubeId": "3cGqVYXhbmI"
+      },
+      {
+        "id": 15,
+        "category": "psikologi",
+        "title": "Sejarah Flying Monkey",
+        "description": "",
+        "youtubeId": "zsliotc2t6U"
+      }
+    ]
+  }

@@ -1,0 +1,1672 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Erni Rahmawati</title>
+    <link rel="icon" type="image/png" href="./aset_gambar/aset_index/foto_erni_landingpage.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        /* Wrapper untuk alignment yang konsisten */
+        .wrapper {
+            width: 90%;
+            max-width: 1500px;
+            margin: 0 auto;
+        }
+        
+        /* Navbar Styling */
+        nav {
+            position: fixed; /* Ubah dari yang sebelumnya */
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background-color: #3f2b96; /* Default color is now blue */
+            padding: 30px 0;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo a {
+            color: #ffffff; /* Ubah dari white ke hitam */
+            text-decoration: none;
+            font-size: 24px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        
+
+        .logo:hover {
+            color: #3f2b96;
+            text-decoration: underline;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: white; /* Default color is now white */
+            text-decoration: none;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        nav.scrolled {
+            background-color: #ffffff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        nav.scrolled .logo a,
+        nav.scrolled .nav-links a {
+            color: #000000; /* Change to black when scrolled */
+        }
+
+        nav.scrolled .hamburger span {
+            background-color: #333; /* Change to black when scrolled */
+        }
+        
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            z-index: 1000;
+        }
+        
+        .hamburger span {
+            width: 30px;
+            height: 3px;
+            background-color: white; /* Default color is now white */
+            margin: 3px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 6px);
+        }
+
+        .hamburger.active span {
+            background-color: white !important; /* !important untuk memastikan prioritas styling */
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(8px, -6px);
+        }
+        
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100vh;
+            background-color: #3f2b96;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: right 0.5s ease;
+        }
+        
+        .mobile-nav.active {
+            right: 0;
+        }
+        
+        .mobile-nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 15px 0;
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-nav a:hover {
+            transform: translateX(-5px);
+        }
+
+
+
+
+
+        
+        
+        /*CV SECTION */
+
+        .cv-section {
+            padding: 150px 0 80px;
+            background-color: #f3f2ef; /* Ubah jadi abu-abu muda kayak LinkedIn */
+            min-height: 100vh;
+        }
+
+        .cv-content-wrapper {
+            max-width: 1128px; /* Lebar container kayak LinkedIn */
+            margin: 0 auto; /* Center di tengah */
+            padding: 0 24px; /* Padding kiri-kanan */
+        }
+        
+        .cv-container {
+            max-width: 100%; /* Full width dalam wrapper */
+            margin: 0 0 20px 0; /* Remove auto margin, kasih margin bottom */
+            background-color: #ffffff;
+            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow LinkedIn style */
+            border-radius: 8px; /* Lebih kecil radius-nya */
+            padding: 0; /* Remove padding karena setiap section punya padding sendiri */
+        }
+        
+        .cv-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 70px;
+        }
+        
+        .cv-title {
+            flex: 1;
+            padding-right: 180px;
+        }
+        
+        .cv-title h1 {
+            font-size: 34px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .cv-title p {
+            font-size: 13px;
+            line-height: 1.6;
+            color: #666;
+        }
+        
+        .cv-image {
+            width: 300px;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 50%; /* Changed to make it a perfect circle */
+            border: 2px solid #eee; /* Light border around the circle */
+        }
+        
+        .cv-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .cv-category {
+            margin-bottom: 60px;
+        }
+        
+        .cv-category h2 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .cv-category h2::before {
+            content: "■ ■";
+            position: absolute;
+            top: -25px; /* Position the squares above the heading */
+            left: 0;
+            color: #000;
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+        
+        .cv-entry {
+            margin-bottom: 30px;
+        }
+        
+        .cv-entry h3 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .cv-entry h3::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            font-size: 28px;
+            line-height: 1;
+            color: #3f2b96;
+        }
+        
+        .cv-list {
+            list-style: none;
+            padding-left: 25px;
+        }
+        
+        .cv-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 15px;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .cv-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #3f2b96;
+        }
+
+
+
+
+
+
+
+        /* garis transisi */
+
+        .section-divider {
+            position: relative;
+            width: 100%;
+            height: 20px;
+            background-color: #3f2b96;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .divider-line {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: #ffffff;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+
+
+
+
+
+
+
+
+        /* CONTACT SECTION */
+
+        .contact-section {
+            padding: 0 0 80px;
+            padding-top: 80px;
+            padding-bottom: 180px;
+            background-color: #3f2b96;
+        }
+        
+        .contact-outer {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            position: relative;
+
+        }
+        
+        .contact-container {
+            width: 100%;
+            padding: 10px;
+        }
+        
+        .contact-content {
+            background-color: #3f2b96;
+            border-radius: 10px;
+            padding: 50px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .contact-title {
+            color: #ffffff;
+            font-size: 4em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .contact-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .contact-form {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding-top: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 30px;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            color: #ffffff;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+            outline: none;
+        }
+        
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-bottom-color: #ffffff;
+        }
+        
+        .contact-form textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .form-submit {
+            margin-top: 40px;
+            text-align: center;
+        }
+        
+        .form-submit button {
+            background-color: #ffffff;
+            color: #000000;
+            border: none;
+            padding: 12px 40px;
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .form-submit button:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+            transform: translateY(-2px);
+        }
+        
+        .success-message {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            padding: 15px 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: opacity 0.5s ease;
+        }
+
+        /* ===== LINKEDIN-STYLE PROFILE HEADER ===== */
+        .linkedin-profile-header {
+            position: relative;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-cover {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #3f2b96 0%, #5a4db8 100%);
+            position: relative;
+        }
+
+        .profile-main-info {
+            padding: 0 40px 30px 40px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center semua content */
+            text-align: center; /* Text jadi center */
+        }
+
+        .profile-photo-wrapper {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid #fff;
+            overflow: hidden;
+            position: relative; /* Ubah dari absolute */
+            margin-top: -75px; /* Tetap overlap dengan cover */
+            margin-bottom: 20px; /* Spacing ke bawah */
+            background: #fff;
+        }
+
+        .profile-photo-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-details {
+            padding-top: 0; /* Remove padding top karena udah centered */
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center align */
+            width: 100%;
+        }
+
+        .profile-name {
+            font-size: 32px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 5px;
+        }
+
+        .profile-title {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .profile-meta {
+            display: flex;
+            gap: 15px;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+            justify-content: center; /* Center align meta items */
+        }
+
+        .profile-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .profile-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            justify-content: center; /* Center align buttons */
+            flex-wrap: wrap; /* Biar responsive */
+        }
+
+        .profile-btn {
+            padding: 10px 24px;
+            border-radius: 24px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .profile-btn-primary {
+            background: #0a66c2;
+            color: #fff;
+        }
+
+        .profile-btn-primary:hover {
+            background: #004182;
+        }
+
+        .profile-btn-secondary {
+            background: #fff;
+            color: #0a66c2;
+            border: 1px solid #0a66c2;
+        }
+
+        .profile-btn-secondary:hover {
+            background: #f3f6f8;
+        }
+
+        .profile-about-section {
+            padding: 30px 40px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .profile-about-section h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .profile-about-section p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* ===== LINKEDIN-STYLE EXPERIENCE SECTION ===== */
+        .linkedin-experience-section {
+            background: #fff;
+            border-radius: 8px;
+            padding: 30px 40px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .experience-header h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #000;
+        }
+
+        .experience-item {
+            display: flex;
+            gap: 15px;
+            padding: 20px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+        }
+
+        .experience-logo {
+            width: 48px;
+            height: 48px;
+            flex-shrink: 0;
+        }
+
+        .experience-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .experience-content {
+            flex: 1;
+        }
+
+        .experience-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 2px;
+        }
+
+        .experience-company {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .experience-duration {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .experience-location {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .experience-description {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .experience-description ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .experience-description ul li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+        }
+
+        .experience-description ul li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #666;
+        }
+
+        .experience-media {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .media-item {
+            width: 120px;
+            height: 120px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .media-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .media-item-video {
+            position: relative;
+        }
+
+        .media-item-video:before {
+            content: "▶";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            font-size: 24px;
+            background: rgba(0, 0, 0, 0.6);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-left: 3px;
+        }
+
+        .show-more-btn {
+            color: #666;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        .show-more-btn:hover {
+            color: #0a66c2;
+        }
+
+        /* Skills Badge */
+        .experience-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .skill-badge {
+            padding: 6px 12px;
+            background: #f3f2ef;
+            border-radius: 16px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #666;
+        }
+
+        .cta-wrapper {
+            max-width: 1128px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #02c94e 0%, #00947b 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 50px;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            color: #667eea;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        .cv-section,
+        .cta-section,
+        .footer-section {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        @keyframes slideUpAnimation {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+
+
+
+
+
+
+        /*FOOTER SECTION */
+
+        .footer-section {
+            background-color: #ffffff;
+            padding: 20px 0 30px; /* Padding atas lebih besar untuk memberikan ruang bagi foto */
+            width: 100%;
+            color: rgb(0, 0, 0);
+            position: relative;
+            margin-top: 0px; /* Membuat footer overlap dengan bekerjasama section */
+        }
+
+        .footer-container {
+            width: 60%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            padding-top: 80px; /* Ruang tambahan setelah foto */
+        }
+
+        .footer-left {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .footer-name {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .social-circle {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 20%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-circle:hover {
+            background-color: #00ff15;
+            transform: scale(1.1);
+        }
+
+        .social-circle i {
+            color: black;
+            transition: color 0.3s ease;
+        }
+
+        .social-circle:hover i {
+            color: #3f2b96;
+        }
+
+        .footer-email {
+            font-size: 12px;
+            margin-bottom: 20px;
+        }
+
+        .footer-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .quicklinks-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-link {
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-link:hover {
+            opacity: 0.8;
+        }
+
+        .copyright {
+            width: 90%;
+            max-width: 1200px;
+            margin: 50px auto 0;
+            padding-top: 40px;
+            border-top: 1px solid rgba(0, 0, 0, 0.2);
+            text-align: center;
+            font-size: 12px;
+            color: rgba(0, 0, 0, 0.7);
+        }
+
+
+
+/* Media Query untuk ukuran layar 1500px */
+        @media (max-width: 1500px) {
+        
+            .cv-section {
+                padding: 140px 0 70px;
+            }
+            
+            .cv-container {
+                max-width: 1100px;
+                padding: 45px;
+            }
+            
+            .cv-title h1 {
+                font-size: 34px;
+            }
+            
+            .cv-title p {
+                font-size: 13px;
+            }
+
+            .contact-outer {
+                max-width: 1100px;
+            }
+            
+
+        }
+
+        /* Media Query untuk ukuran layar 1400px */
+        @media (max-width: 1400px) {
+            
+            .cv-section {
+                padding: 140px 0 70px;
+            }
+
+            .cv-container {
+                max-width: 1000px;
+                padding: 45px;
+            }
+            
+            .cv-image {
+                width: 280px;
+                height: 280px;
+            }
+
+            .contact-outer {
+                max-width: 1000px;
+            }
+            
+            .contact-form {
+                max-width: 550px;
+            }
+        }
+
+        /* Media Query untuk ukuran layar 1300px */
+        @media (max-width: 1300px) {
+            
+            .cv-section {
+                padding: 140px 0 70px;
+            }
+
+            .cv-container {
+                max-width: 900px;
+                padding: 45px;
+            }
+            
+            .cv-header {
+                margin-bottom: 60px;
+            }
+
+            .contact-outer {
+                max-width: 900px;
+            }
+
+        }
+
+        /* Media Query untuk ukuran layar 1200px */
+        @media (max-width: 1200px) {
+
+            .cv-section {
+                padding: 140px 0 70px;
+            }
+
+            .cv-container {
+                max-width: 900px;
+                padding: 45px;
+            }
+            
+            .cv-title h1 {
+                font-size: 32px;
+            }
+            
+            .cv-image {
+                width: 260px;
+                height: 260px;
+            }
+
+            .contact-outer {
+                max-width: 900px;
+            }
+            
+
+            
+            .contact-form input,
+            .contact-form textarea {
+                font-size: 15px;
+            }
+            
+        }
+
+        /* Media Query untuk ukuran layar 1100px */
+        @media (max-width: 1100px) {
+            
+            .cv-section {
+                padding: 140px 0 70px;
+            }
+            
+            .cv-title p {
+                font-size: 14px;
+            }
+
+            .contact-content {
+                padding: 40px;
+            }
+            
+            .contact-subtitle {
+                font-size: 14px;
+            }
+        }
+
+        /* Media Query untuk ukuran layar tablet */
+        @media (max-width: 1024px) {
+            /* Navbar */
+
+            .media-header {
+                margin-bottom: 8%;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+
+            .cv-container {
+                max-width: 90%;
+                padding: 40px 30px;
+            }
+            
+            .cv-header {
+                flex-direction: column-reverse;
+                align-items: center;
+                margin-bottom: 70px;
+            }
+            
+            .cv-title {
+                padding-right: 0;
+                text-align: center;
+                margin-top: 30px;
+            }
+            
+            .cv-category h2 {
+                font-size: 22px;
+            }
+            
+            .cv-entry h3 {
+                font-size: 17px;
+            }
+
+            .footer-container {
+                width: 70%;
+                max-width: 1200px;
+            }
+
+            .contact-outer {
+                max-width: 90%;
+            }
+            
+            .contact-content {
+                padding: 35px;
+            }
+            
+            .form-group {
+                margin-bottom: 25px;
+            }
+        }
+
+        /* Media Query untuk ukuran layar mobile */
+        @media (max-width: 768px) {
+            /* Container */
+            .name {
+                font-size: 36px;
+            }
+
+            .cv-section {
+                padding: 140px 0 70px;
+            }
+            
+            .cv-container {
+                width: 95%;
+                padding: 30px 20px;
+            }
+            
+            .cv-title h1 {
+                font-size: 28px;
+            }
+
+            .cv-title p {
+                font-size: 12px;
+            }
+            
+            .cv-image {
+                width: 240px;
+                height: 240px;
+            }
+            
+            .cv-category h2 {
+                font-size: 20px;
+            }
+            
+            .cv-entry h3 {
+                font-size: 16px;
+            }
+            
+            .cv-list li {
+                font-size: 13px;
+            }
+
+
+            .footer-container {
+                width: 85%;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 40px;
+                padding-top: 50px;
+            }
+            
+            /* Center footer left content */
+            .footer-left {
+                align-items: center;
+                width: 100%;
+            }
+            
+            /* Center social links */
+            .social-links {
+                justify-content: center;
+            }
+            
+            /* Center footer right content */
+            .footer-right {
+                align-items: center;
+                width: 100%;
+            }
+            
+            /* Center footer links */
+            .footer-links {
+                align-items: center;
+            }
+            
+            /* Adjust email spacing */
+            .footer-email {
+                margin-bottom: 10px;
+            }
+            
+            /* Adjust quicklinks title margin */
+            .quicklinks-title {
+                margin-bottom: 15px;
+            }
+            
+            /* Adjust copyright section */
+            .copyright {
+                padding-top: 30px;
+                margin-top: 40px;
+            }
+            
+            /* Footer section padding adjustments */
+            .footer-section {
+                padding: 20px 0 30px;
+            }
+
+
+            
+            
+            .contact-content {
+                padding: 30px 20px;
+            }
+            
+            .contact-title {
+                font-size: 3em;
+            }
+            
+            .contact-subtitle {
+                font-size: 13px;
+                margin-bottom: 30px;
+            }
+            
+            .contact-form input,
+            .contact-form textarea {
+                padding: 12px;
+                font-size: 14px;
+            }
+            
+            .form-submit {
+                margin-top: 30px;
+            }
+            
+            .form-submit button {
+                width: 100%;
+                padding: 10px;
+                font-size: 14px;
+            }
+        }
+
+        body.loaded .cv-section,
+        body.loaded .cta-section,
+        body.loaded .footer-section {
+            animation: slideUpAnimation 0.8s ease-out forwards;
+        }
+
+        body.loaded .cv-section {
+            animation-delay: 0.1s;
+        }
+
+        body.loaded .cta-section {
+            animation-delay: 0.3s;
+        }
+
+        body.loaded .footer-section {
+            animation-delay: 0.5s;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="wrapper nav-container">
+            <div class="logo">
+                <a href="./index.html">ER</a>
+
+            </div>
+            <div class="nav-links">
+                <a href="./about.html">About</a>
+                <a href="./media.html">Media</a>
+                <a href="./testimonial.html">Testimonials</a>
+                <a href="./publikasi.html">Publications</a>
+                <a href="./library-login.html">Library</a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="mobile-nav">
+            <a href="./about.html">About</a>
+            <a href="./media.html">Media</a>
+            <a href="./testimonial.html">Testimonials</a>
+            <a href="./publikasi.html">Publications</a>
+            <a href="./library-login.html">Library</a>
+        </div>
+    </nav>
+    
+    <!-- CV Section -->
+    <section class="cv-section">
+        <!-- TAMBAHKAN wrapper ini -->
+        <div class="cv-content-wrapper">
+            
+            <!-- Profile Header Section -->
+            <div class="linkedin-profile-header">
+                <!-- Cover Photo -->
+                <div class="profile-cover"></div>
+                
+                <!-- Main Profile Info -->
+                <div class="profile-main-info">
+                    <!-- Profile Photo -->
+                    <div class="profile-photo-wrapper">
+                        <img src="./aset_gambar/aset_about/fotoprofil_about.png" alt="Your Name">
+                    </div>
+                    
+                    <!-- Profile Details -->
+                    <div class="profile-details">
+                        <h1 class="profile-name">Erni Rahmawati</h1>
+                        <p class="profile-title">Akademisi</p>
+                        
+                        <div class="profile-meta">
+                            <div class="profile-meta-item">
+                                <span>Bogor, Indonesia</span>
+                            </div>
+                        </div>
+                        
+                        <div class="profile-meta">
+                            <div class="profile-meta-item">
+                                <span>🎓 Universitas Indonesia</span>
+                            </div>
+                        </div>
+                    
+                    </div>
+                </div>
+                
+
+                
+                <!-- About Section -->
+                <div class="profile-about-section">
+                    <div class="about-header">
+                        <h3>Tentang</h3>
+                    </div>
+                    <p>
+                        I am a person who love to seek new challenges. My opinion is we have to be thankful for who we finally become after defeating so many obstacles. Those obstacles make us stronger. Life's worth it
+                    </p>
+                </div>
+                
+            </div>
+            
+            <!-- Experience Section -->
+            <div class="linkedin-experience-section">
+                <div class="experience-header">
+                    <h2>Pengalaman Kerja</h2>
+                </div>
+                
+                <!-- Experience Item 1 -->
+                <div class="experience-item">
+                    <div class="experience-logo">
+                        <img src="./aset_gambar/aset_about/pekerjaan_1.png" alt="Your Name">
+                    </div>
+                    
+                    <div class="experience-content">
+                        <h3 class="experience-title">Content Creator</h3>
+                        <p class="experience-company">Wiraswasta</p>
+                        <p class="experience-duration">Des 2024 - Sekarang</p>
+                        <p class="experience-location">Full Time - Bogor</p>
+                        
+                        <div class="experience-description">
+                            <ul>
+                                <li>Bikin konten di Instagram @erni_kriminologi</li>
+                                <li>Bikin konten di TikTok @erni_kriminologi</li>
+                                <li>Bikin konten di YouTube Erni Kriminologi</li>
+                            </ul>
+                        </div>
+                        
+                        <!--
+                        <div class="experience-media">
+                            <div class="media-item media-item-video">
+                                <iframe src="https://www.youtube.com/embed/CUZRw8J8h0s" title="Video Instagram" allowfullscreen></iframe>
+                            </div>
+                            <div class="media-item media-item-video">
+                                <iframe src="https://www.youtube.com/embed/txS-6F2iHG0" title="Video Youtube" allowfullscreen></iframe>
+                            </div>
+                        </div>-->
+                        
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-logo">
+                        <img src="./aset_gambar/aset_about/pekerjaan_3.png" alt="Your Name">
+                    </div>
+                    
+                    <div class="experience-content">
+                        <h3 class="experience-title">Tutor</h3>
+                        <p class="experience-company">Full Time</p>
+                        <p class="experience-duration">2019 - 2020</p>
+                        <p class="experience-location">Jakarta</p>
+                        
+                        
+                        
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-logo">
+                        <img src="./aset_gambar/aset_about/pekerjaan_2.png" alt="Your Name">
+                    </div>
+                    
+                    <div class="experience-content">
+                        <h3 class="experience-title">English Teacher</h3>
+                        <p class="experience-company">Full Time</p>
+                        <p class="experience-duration">2015 - 2017</p>
+                        <p class="experience-location">Full Time - Cibinong</p>
+                        
+                        <!--
+                        <div class="experience-description">
+                            <ul>
+                                <li>Edited 20++ short videos per week for diverse clients across multiple industries.</li>
+                                <li>Managed multiple client projects simultaneously while ensuring each video met specific brand requirements.</li>
+                            </ul>
+                        </div>
+                        -->
+
+
+                        <!--
+                        <div class="experience-media">
+                            <div class="media-item media-item-video">
+                                <img src="video-thumbnail1.jpg" alt="Video 1">
+                            </div>
+                            <div class="media-item media-item-video">
+                                <img src="video-thumbnail2.jpg" alt="Video 2">
+                            </div>
+                        </div>
+                        -->
+                        
+                    </div>
+                </div>
+                
+   
+            </div>
+            
+
+            <div class="linkedin-experience-section">
+                <div class="experience-header">
+                    <h2>Pengalaman Riset</h2>
+                </div>
+                
+                <!-- Experience Item 1 -->
+                <div class="experience-item">
+                    <div class="experience-logo">
+                        <img src="./aset_gambar/aset_about/studi_1.png" alt="Your Name">
+                    </div>
+                    
+                    <div class="experience-content">
+                        <h3 class="experience-title">Strategi Pemulihan dan Pengendalian Sosial Formal Viktimisasi dalam Peradilan Pidana Sesat di Indonesia (Tesis).</h3>
+                        <p class="experience-company">by Erni Rahmawati</p>
+                        
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-logo">
+                        <img src="./aset_gambar/aset_about/studi_1.png" alt="Your Name">
+                    </div>
+                    
+                    <div class="experience-content">
+                        <h3 class="experience-title">Integrated Remedy System Sebagai Bentuk dan Sistem Baru Realisasi Pemulihan Korban Kesalahan Proses Peradilan Pidana di Indonesia (Disertasi).</h3>
+                        <p class="experience-company">by Erni Rahmawati</p>
+                        
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-logo">
+                        <img src="./aset_gambar/aset_about/studi_1.png" alt="Your Name">
+                    </div>
+                    
+                    <div class="experience-content">
+                        <h3 class="experience-title">Legitimasi Sistem Peradilan Pidana di Indonesia: Studi Kasus Ferdy Sambo (2022-2023) (Makalah Proyek Akhir).</h3>
+                        <p class="experience-company">by Erni Rahmawati</p>
+                        
+                    </div>
+                </div>
+                
+
+            </div>
+
+            <div class="linkedin-experience-section">
+                <div class="experience-header">
+                    <h2>Studi</h2>
+                </div>
+                
+
+                <div class="experience-item">
+                    <div class="experience-logo">
+                        <img src="./aset_gambar/aset_about/studi_1.png" alt="Your Name">
+                    </div>
+                    
+                    <div class="experience-content">
+                        <h3 class="experience-title">S3 Ilmu Kriminologi</h3>
+                        <p class="experience-company">Universitas Indonesia</p>
+                        <p class="experience-duration">1994 - 2024</p>
+                        <p class="experience-location">Depok</p>
+                        
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-logo">
+                        <img src="./aset_gambar/aset_about/studi_1.png" alt="Your Name">
+                    </div>
+                    
+                    <div class="experience-content">
+                        <h3 class="experience-title">S2 Ilmu Sejarah</h3>
+                        <p class="experience-company">Universitas Indonesia</p>
+                        <p class="experience-duration">2023 - 2025</p>
+                        <p class="experience-location">Depok</p>
+                        
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-logo">
+                        <img src="./aset_gambar/aset_about/studi_2.png" alt="Your Name">
+                    </div>
+                    
+                    <div class="experience-content">
+                        <h3 class="experience-title">S2 Pendidikan Bahasa Inggris</h3>
+                        <p class="experience-company">Universitas Indraprasta PGRI</p>
+                        <p class="experience-duration">2017 - 2019</p>
+                        <p class="experience-location">Jakarta</p>
+                        
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-logo">
+                        <img src="./aset_gambar/aset_about/pekerjaan_2.png" alt="Your Name">
+                    </div>
+                    
+                    <div class="experience-content">
+                        <h3 class="experience-title">S1 Sastra Inggris</h3>
+                        <p class="experience-company">Universitas Terbuka</p>
+                        <p class="experience-duration">2016 - 2019</p>
+                        <p class="experience-location">Jakarta</p>
+                        
+                    </div>
+                </div>
+                
+
+            </div>
+            
+        </div> <!-- TUTUP cv-content-wrapper -->
+
+        <div class="cta-wrapper">
+            <section class="cta-section fade-in">
+                <h2>Let's Work Together!</h2>
+                <p>I am open to collaborating and contributing my expertise in criminology!</p>
+                <a href="https://wa.me/6282113584718?text=Halo,%20saya%20tertarik%20untuk%20bekerja%20sama" class="cta-button" target="_blank">
+                    <img src="https://cdn.iconscout.com/icon/free/png-512/free-whatsapp-icon-svg-download-png-189793.png?f=webp&w=256" width="30px" height="30px">
+                    <span>Contact me on WhatsApp!</span>
+                </a>
+            </section>
+        </div>
+    </section>
+
+
+    <footer class="footer-section">
+        <div class="footer-container">
+            <div class="footer-left">
+                <h3 class="footer-name">ERNI RAHMAWATI</h3>
+                <div class="social-links">
+                    <!-- YouTube -->
+                        <a href="https://www.youtube.com/@ErniKriminologi" class="social-circle" target="_blank">
+                            <i class="fab fa-youtube" style="font-size: 24px;"></i>
+                        </a>
+                        
+                        <!-- TikTok -->
+                        <a href="https://www.tiktok.com/@erni.kriminologi" class="social-circle" target="_blank">
+                            <i class="fab fa-tiktok" style="font-size: 24px;"></i>
+                        </a>
+                        
+                        <!-- Instagram -->
+                        <a href="https://www.instagram.com/erni_kriminologi/?hl=en" class="social-circle" target="_blank">
+                            <i class="fab fa-instagram" style="font-size: 24px;"></i>
+                        </a>
+                </div>
+                <p class="footer-email">ERNIRAHMAWATI@GMAIL.COM</p>
+            </div>
+                
+            <div class="footer-right">
+                <h3 class="quicklinks-title">QUICK LINKS</h3>
+                <div class="footer-links">
+                    <a href="./about.html" class="footer-link">ABOUT</a>
+                    <a href="./media.html" class="footer-link">MEDIA</a>
+                    <a href="./publikasi.html" class="footer-link">PUBLICATIONS</a>
+                    <a href="./testimonial.html" class="footer-link">TESTIMONIALS</a>
+                    <a href="./library-login.html" class="footer-link">LIBRARY</a>
+                </div>
+            </div>
+        </div>
+            
+        <div class="copyright">
+            ©COPYRIGHT BY ERNI RAHMAWATI 2025
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const navbar = document.querySelector('nav');
+            
+            function handleScroll() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            }
+            
+            window.addEventListener('scroll', handleScroll);
+            
+            // Trigger animasi saat page load
+            setTimeout(function() {
+                document.body.classList.add('loaded');
+            }, 100);
+            
+            // Check scroll position when page loads
+            handleScroll();
+        });
+
+        // Image Slider
+        let currentImage = 1;
+        const totalImages = 3;
+        
+        function changeImage() {
+            // Hide all images
+            for(let i = 1; i <= totalImages; i++) {
+                document.getElementById(`img${i}`).classList.remove('active');
+            }
+            
+            // Show current image
+            document.getElementById(`img${currentImage}`).classList.add('active');
+            
+            // Update counter for next image
+            currentImage = currentImage >= totalImages ? 1 : currentImage + 1;
+        }
+        
+        // Change image every 3 seconds
+        setInterval(changeImage, 3000);
+        
+        // Hamburger Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const mobileNav = document.querySelector('.mobile-nav');
+        
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            // Prevent scrolling when menu is open
+            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : 'auto';
+        });
+        
+        // Close menu when clicking on a link
+        const mobileLinks = document.querySelectorAll('.mobile-nav a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                mobileNav.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+    </script>
+</body>
+</html>

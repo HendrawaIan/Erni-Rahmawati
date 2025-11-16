@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Detail - Erni Rahmawati</title>
+    <link rel="icon" type="image/png" href="./aset_gambar/aset_index/foto_erni_landingpage.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Wrapper untuk alignment yang konsisten */
+        .wrapper {
+            width: 90%;
+            max-width: 1500px;
+            margin: 0 auto;
+        }
+
+        /* Navbar Styling dari testimonial.html */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background-color: #3f2b96; /* Default color is now blue */
+            padding: 30px 0;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo a {
+            color: #ffffff; /* Ubah dari white ke hitam */
+            text-decoration: none;
+            font-size: 24px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        
+
+        .logo:hover {
+            color: #3f2b96;
+            text-decoration: underline;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: white; /* Default color is now white */
+            text-decoration: none;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        nav.scrolled {
+            background-color: #ffffff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        nav.scrolled .logo a,
+        nav.scrolled .nav-links a {
+            color: #000000; /* Change to black when scrolled */
+        }
+
+        nav.scrolled .hamburger span {
+            background-color: #333; /* Change to black when scrolled */
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .hamburger span {
+            width: 30px;
+            height: 3px;
+            background-color: white; /* Default color is now white */
+            margin: 3px 0;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 6px);
+        }
+
+        .hamburger.active span {
+            background-color: white !important; /* !important untuk memastikan prioritas styling */
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(8px, -6px);
+        }
+
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100vh;
+            background-color: #3f2b96;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: right 0.5s ease;
+        }
+
+        .mobile-nav.active {
+            right: 0;
+        }
+
+        .mobile-nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 15px 0;
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-nav a:hover {
+            transform: translateX(-5px);
+        }
+
+        /* Video Detail Section */
+        .video-detail-section {
+            padding: 180px 0 120px; /* Meningkatkan padding atas dan bawah */
+            background-color: #ffffff;
+        }
+
+        .video-detail-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .video-detail-header {
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #3f2b96;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #331d86;
+            transform: translateY(-2px);
+        }
+
+        .back-button span {
+            margin-left: 8px;
+        }
+
+        .video-player-container {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background-color: #000;
+            margin-bottom: 40px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .video-player-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-content {
+            display: flex;
+            margin-bottom: 60px;
+        }
+
+        .video-info {
+            flex: 1;
+            padding-right: 60px;
+        }
+
+        .video-category {
+            display: inline-block;
+            background-color: transparent; /* Ubah dari #3f2b96 menjadi transparent */
+            color: #666; /* Ubah dari white menjadi abu-abu */
+            padding: 8px 0; /* Ubah padding, hapus padding kiri dan kanan */
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            position: relative; /* Tambahkan position relative untuk penempatan pseudo-element */
+            border-radius: 0; /* Hapus border-radius */
+        }
+
+        .video-category::before {
+            content: "■ ■";
+            position: absolute;
+            top: -15px;
+            left: 0;
+            color: #3f2b96; /* Warna kotak biru/ungu */
+            font-size: 10px;
+            letter-spacing: 2px;
+        }
+
+        .video-headline {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            color: #000;
+            position: relative;
+            padding-bottom: 25px;
+        }
+
+        .video-headline::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background-color: #3f2b96;
+        }
+
+        .video-description {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .video-meta {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            margin-right: 30px;
+            margin-bottom: 10px;
+        }
+
+        .meta-icon {
+            width: 20px;
+            height: 20px;
+            background-color: #3f2b96;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .meta-text {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .share-buttons {
+            margin-top: 40px;
+        }
+
+        .share-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #000;
+        }
+
+        .share-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .share-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #3f2b96;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .share-icon:hover {
+            transform: translateY(-3px);
+            background-color: #331d86;
+        }
+
+        .related-videos {
+            margin-top: 40px; /* Mengurangi dari 80px ke 40px */
+        }
+
+        .related-title {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .related-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background-color: #3f2b96;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .related-item {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .related-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .related-thumbnail {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/9;
+            background-color: #eee;
+            overflow: hidden;
+        }
+
+        .related-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background-color: rgba(63, 43, 150, 0.8);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .play-icon:before {
+            content: "";
+            width: 0;
+            height: 0;
+            border-top: 12px solid transparent;
+            border-left: 20px solid white;
+            border-bottom: 12px solid transparent;
+            margin-left: 5px;
+        }
+
+        .related-content {
+            padding: 20px;
+        }
+
+        .related-category {
+            font-size: 12px;
+            color: #3f2b96;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .related-headline {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #000;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .related-date {
+            font-size: 12px;
+            color: #666;
+        }
+
+        /* Footer styling dari testimonial.html */
+        .footer-section {
+            background-color: #3f2b96;
+            padding: 20px 0 30px; /* Padding atas lebih besar untuk memberikan ruang bagi foto */
+            width: 100%;
+            color: rgb(255, 255, 255);
+            position: relative;
+            margin-top: 0px; /* Membuat footer overlap dengan bekerjasama section */
+        }
+
+        .footer-container {
+            width: 60%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            padding-top: 80px; /* Ruang tambahan setelah foto */
+        }
+
+        .footer-left {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .footer-name {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .social-circle {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 20%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-circle:hover {
+            background-color: #00ff15;
+            transform: scale(1.1);
+        }
+
+        .social-circle i {
+            color: rgb(255, 255, 255);
+            transition: color 0.3s ease;
+        }
+
+        .social-circle:hover i {
+            color: #3f2b96;
+        }
+
+        .footer-email {
+            font-size: 12px;
+            margin-bottom: 20px;
+        }
+
+        .footer-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .quicklinks-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-link {
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-link:hover {
+            opacity: 0.8;
+        }
+
+        .copyright {
+            width: 90%;
+            max-width: 1200px;
+            margin: 50px auto 0;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .video-detail-section,
+        .footer-section {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        @keyframes slideUpAnimation {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Media Queries */
+        @media (max-width: 1200px) {
+            .video-detail-container {
+                max-width: 90%;
+            }
+            
+            .related-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .hamburger {
+                display: flex;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .video-content {
+                flex-direction: column;
+            }
+            
+            .video-info {
+                padding-right: 0;
+                margin-bottom: 40px;
+            }
+            
+            .video-headline {
+                font-size: 32px;
+            }
+            
+            .footer-container {
+                width: 70%;
+                max-width: 1200px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .video-detail-section {
+                padding: 150px 0 100px; /* Sesuaikan padding pada mobile */
+            }
+            
+            .video-detail-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            /* Mengecilkan tombol back pada mobile */
+            .back-button {
+                padding: 8px 18px;
+                font-size: 14px;
+            }
+            
+            .back-button span {
+                font-size: 13px;
+            }
+            
+            /* Memperbesar video pada mobile dengan mengurangi margin di sekitarnya */
+            .video-player-container {
+                margin-bottom: 30px;
+                width: 100%; /* Pastikan video menggunakan lebar penuh */
+            }
+            
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .video-headline {
+                font-size: 28px;
+            }
+            
+            /* Mengurangi jarak antara deskripsi dan related video pada mobile */
+            .related-videos {
+                margin-top: 30px;
+            }
+            
+            /* Mengurangi jarak antara konten video dan bagian bawah section */
+            .video-content {
+                margin-bottom: 40px; /* Kurangi dari 60px */
+            }
+            
+            .footer-container {
+                width: 85%;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 40px;
+                padding-top: 50px;
+            }
+            
+            /* Center footer left content */
+            .footer-left {
+                align-items: center;
+                width: 100%;
+            }
+            
+            /* Center social links */
+            .social-links {
+                justify-content: center;
+            }
+            
+            /* Center footer right content */
+            .footer-right {
+                align-items: center;
+                width: 100%;
+            }
+            
+            /* Center footer links */
+            .footer-links {
+                align-items: center;
+            }
+            
+            /* Adjust email spacing */
+            .footer-email {
+                margin-bottom: 10px;
+            }
+            
+            /* Adjust quicklinks title margin */
+            .quicklinks-title {
+                margin-bottom: 15px;
+            }
+            
+            /* Adjust copyright section */
+            .copyright {
+                padding-top: 30px;
+                margin-top: 40px;
+            }
+            
+            /* Footer section padding adjustments */
+            .footer-section {
+                padding: 20px 0 30px;
+            }
+        }
+
+        body.loaded .video-detail-section,
+        body.loaded .footer-section {
+            animation: slideUpAnimation 0.8s ease-out forwards;
+        }
+
+        /* Stagger delay */
+        body.loaded .video-detail-section {
+            animation-delay: 0.1s;
+        }
+
+        body.loaded .footer-section {
+            animation-delay: 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar dari testimonial.html -->
+    <nav>
+        <div class="wrapper nav-container">
+            <div class="logo">
+                <a href="./index.html">ER</a>
+
+            </div>
+            <div class="nav-links">
+                <a href="./about.html">About</a>
+                <a href="./media.html">Media</a>
+                <a href="./testimonial.html">Testimonials</a>
+                <a href="./publikasi.html">Publications</a>
+                <a href="./library-login.html">Library</a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="mobile-nav">
+            <a href="./about.html">About</a>
+            <a href="./media.html">Media</a>
+            <a href="./testimonial.html">Testimonials</a>
+            <a href="./publikasi.html">Publications</a>
+            <a href="./library-login.html">Library</a>
+        </div>
+    </nav>
+    
+    <!-- Video Detail Section -->
+    <section class="video-detail-section">
+        <div class="video-detail-container">
+            <div class="video-detail-header">
+                <a href="media.html" class="back-button">
+                    ← <span>Back to Videos</span>
+                </a>
+            </div>
+            
+            <div class="video-player-container">
+                <iframe id="video-player" 
+                        src="" 
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                </iframe>
+            </div>
+            
+            <div class="video-content">
+                <div class="video-info">
+                    <span class="video-category" id="video-category">Category</span>
+                    <h2 class="video-headline" id="video-headline">Video Headline</h2>
+                    <p class="video-description" id="video-description">
+                        Video description will be loaded here.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="related-videos">
+                <h2 class="related-title">Related Videos</h2>
+                <div class="related-grid" id="related-grid">
+                    <!-- Related videos will be loaded here dynamically -->
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer dari testimonial.html -->
+    <footer class="footer-section">
+        <div class="footer-container">
+            <div class="footer-left">
+                <h3 class="footer-name">ERNI RAHMAWATI</h3>
+                <div class="social-links">
+                        <!-- YouTube -->
+                        <a href="https://www.youtube.com/@ErniKriminologi" class="social-circle" target="_blank">
+                            <i class="fab fa-youtube" style="font-size: 24px;"></i>
+                        </a>
+                        
+                        <!-- TikTok -->
+                        <a href="https://www.tiktok.com/@erni.kriminologi" class="social-circle" target="_blank">
+                            <i class="fab fa-tiktok" style="font-size: 24px;"></i>
+                        </a>
+                        
+                        <!-- Instagram -->
+                        <a href="https://www.instagram.com/erni_kriminologi/?hl=en" class="social-circle" target="_blank">
+                            <i class="fab fa-instagram" style="font-size: 24px;"></i>
+                        </a>
+                </div>
+                <p class="footer-email">ERNIRAHMAWATI@GMAIL.COM</p>
+            </div>
+                
+            <div class="footer-right">
+                <h3 class="quicklinks-title">QUICK LINKS</h3>
+                <div class="footer-links">
+                    <a href="./about.html" class="footer-link">ABOUT</a>
+                    <a href="./media.html" class="footer-link">MEDIA</a>
+                    <a href="./publikasi.html" class="footer-link">PUBLICATIONS</a>
+                    <a href="./testimonial.html" class="footer-link">TESTIMONIALS</a>
+                    <a href="./library-login.html" class="footer-link">LIBRARY</a>
+                </div>
+            </div>
+        </div>
+            
+        <div class="copyright">
+            ©COPYRIGHT BY ERNI RAHMAWATI 2025
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navbar scroll effect dari testimonial.html
+            const navbar = document.querySelector('nav');
+            
+            function handleScroll() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            }
+            
+            window.addEventListener('scroll', handleScroll);
+            handleScroll(); // Check on page load
+
+            setTimeout(function() {
+                document.body.classList.add('loaded');
+            }, 100);
+            
+            // Hamburger menu functionality dari testimonial.html
+            const hamburger = document.querySelector('.hamburger');
+            const mobileNav = document.querySelector('.mobile-nav');
+            
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                mobileNav.classList.toggle('active');
+                document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : 'auto';
+            });
+            
+            // Close menu when clicking on a link
+            const mobileLinks = document.querySelectorAll('.mobile-nav a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    hamburger.classList.remove('active');
+                    mobileNav.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            });
+            
+            // Get video ID from URL parameter
+            const urlParams = new URLSearchParams(window.location.search);
+            const videoId = urlParams.get('id');
+            
+            if (!videoId) {
+                // If no video ID is provided, redirect to media page
+                window.location.href = 'media.html';
+                return;
+            }
+            
+            // Variable to store all videos
+            let allVideos = [];
+            let currentVideo = null;
+            
+            // Fetch video data from JSON file
+            fetch('videos.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data && data.videos && Array.isArray(data.videos)) {
+                        allVideos = data.videos;
+                        
+                        // Find the current video by ID
+                        currentVideo = allVideos.find(video => video.id == videoId);
+                        
+                        if (currentVideo) {
+                            // Populate the video details
+                            populateVideoDetails(currentVideo);
+                            
+                            // Load related videos (same category)
+                            loadRelatedVideos(currentVideo);
+                        } else {
+                            handleVideoNotFound();
+                        }
+                    } else {
+                        throw new Error('Invalid data format');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading video data:', error);
+                    // Try fallback data
+                    useFallbackData();
+                });
+            
+            // Function to populate video details
+            function populateVideoDetails(video) {
+                // Set page title
+                document.title = `${video.title} - Erni Rahmawati`;
+                
+                // Update video details - hanya mengisi yang masih ada di HTML
+                document.getElementById('video-category').textContent = video.category.toUpperCase();
+                document.getElementById('video-headline').textContent = video.title;
+                document.getElementById('video-description').textContent = video.description;
+                
+                // Update video player
+                const videoPlayer = document.getElementById('video-player');
+                videoPlayer.src = `https://www.youtube.com/embed/${video.youtubeId}?autoplay=1`;
+            }
+            
+            // Function to load related videos
+            function loadRelatedVideos(currentVideo) {
+                const relatedGrid = document.getElementById('related-grid');
+                relatedGrid.innerHTML = '';
+                
+                // Filter videos with the same category, excluding the current video
+                const relatedVideos = allVideos.filter(video => 
+                    video.category === currentVideo.category && video.id != currentVideo.id
+                );
+                
+                // Limit to 3 related videos
+                const videosToShow = relatedVideos.slice(0, 3);
+                
+                if (videosToShow.length === 0) {
+                    // If no related videos, show videos from other categories
+                    const otherVideos = allVideos.filter(video => video.id != currentVideo.id);
+                    videosToShow.push(...otherVideos.slice(0, 3));
+                }
+                
+                // Create HTML for each related video
+                videosToShow.forEach(video => {
+                    const relatedItem = document.createElement('div');
+                    relatedItem.className = 'related-item';
+                    relatedItem.setAttribute('data-id', video.id);
+                    
+                    relatedItem.innerHTML = `
+                        <div class="related-thumbnail">
+                            <img src="https://img.youtube.com/vi/${video.youtubeId}/mqdefault.jpg" alt="${video.title}">
+                            <div class="play-icon"></div>
+                        </div>
+                        <div class="related-content">
+                            <div class="related-category">${video.category.toUpperCase()}</div>
+                            <h3 class="related-headline">${video.title}</h3>
+                            <div class="related-date">May 19, 2025</div>
+                        </div>
+                    `;
+                    
+                    // Add click event to go to the video's detail page
+                    relatedItem.addEventListener('click', function() {
+                        window.location.href = `video-detail.html?id=${video.id}`;
+                    });
+                    
+                    relatedGrid.appendChild(relatedItem);
+                });
+            }
+            
+            // Function to handle video not found
+            function handleVideoNotFound() {
+                // Update error messages - hanya untuk elemen yang masih ada
+                document.getElementById('video-category').textContent = 'ERROR';
+                document.getElementById('video-headline').textContent = 'Video Not Found';
+                document.getElementById('video-description').textContent = 'Sorry, the requested video could not be found. Please return to the videos page and try again.';
+                
+                // Hide the video player
+                document.querySelector('.video-player-container').style.display = 'none';
+            }
+            
+            // Function to use fallback data if JSON fetch fails
+            function useFallbackData() {
+                console.log('Using fallback video data');
+                const fallbackVideos = [
+                    {
+                        id: 1,
+                        category: "kriminologi",
+                        title: "CRIMINAL JUSTICE SYSTEM",
+                        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen.",
+                        youtubeId: "-ktlIHSOOmk"
+                    },
+                    {
+                        id: 2,
+                        category: "kriminologi",
+                        title: "FORENSIC PSYCHOLOGY",
+                        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen.",
+                        youtubeId: "-ktlIHSOOmk"
+                    },
+                    {
+                        id: 3,
+                        category: "kriminologi",
+                        title: "CRIME ANALYSIS",
+                        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen.",
+                        youtubeId: "-ktlIHSOOmk"
+                    },
+                    {
+                        id: 4,
+                        category: "opini",
+                        title: "SOCIAL MEDIA IMPACT",
+                        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen.",
+                        youtubeId: "-ktlIHSOOmk"
+                    },
+                    {
+                        id: 5,
+                        category: "opini",
+                        title: "CURRENT AFFAIRS",
+                        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen.",
+                        youtubeId: "-ktlIHSOOmk"
+                    },
+                    {
+                        id: 6,
+                        category: "opini",
+                        title: "PUBLIC POLICY",
+                        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen.",
+                        youtubeId: "-ktlIHSOOmk"
+                    },
+                    {
+                        id: 7,
+                        category: "psikologi",
+                        title: "COGNITIVE BEHAVIOR",
+                        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen.",
+                        youtubeId: "-ktlIHSOOmk"
+                    },
+                    {
+                        id: 8,
+                        category: "psikologi",
+                        title: "MENTAL HEALTH",
+                        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen.",
+                        youtubeId: "-ktlIHSOOmk"
+                    },
+                    {
+                        id: 9,
+                        category: "psikologi",
+                        title: "HUMAN DEVELOPMENT",
+                        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen.",
+                        youtubeId: "-ktlIHSOOmk"
+                    }
+                ];
+                
+                allVideos = fallbackVideos;
+                
+                // Find the current video by ID
+                currentVideo = allVideos.find(video => video.id == videoId);
+                
+                if (currentVideo) {
+                    // Populate the video details
+                    populateVideoDetails(currentVideo);
+                    
+                    // Load related videos
+                    if (currentVideo) {
+                        // Populate the video details
+                        populateVideoDetails(currentVideo);
+                        
+                        // Load related videos (same category)
+                        loadRelatedVideos(currentVideo);
+                    } else {
+                        handleVideoNotFound();
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

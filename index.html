@@ -1,0 +1,2574 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erni Rahmawati</title>
+    <link rel="icon" type="image/png" href="./aset_gambar/aset_index/foto_erni_landingpage.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        html, body {
+            overflow-x: hidden; /* Ini akan 'memotong' paksa semua yang kelewat batas */
+        }
+        
+        /* Wrapper untuk alignment yang konsisten */
+        .wrapper {
+            width: 90%;
+            max-width: 1500px;
+            margin: 0 auto;
+        }
+        
+        /* Navbar Styling */
+        nav {
+            position: fixed; /* Ubah dari yang sebelumnya */
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background-color: #ffffff;
+            padding: 30px 0;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo a {
+            color: #000000; /* Ubah dari white ke hitam */
+            text-decoration: none;
+            font-size: 24px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        
+
+        .logo:hover {
+            color: #3f2b96;
+            text-decoration: underline;
+        }
+
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: #333; /* Ubah dari white ke hitam */
+            text-decoration: none;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        nav.scrolled {
+            background-color: #3f2b96;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        nav.scrolled .logo a,
+        nav.scrolled .nav-links a {
+            color: white;
+        }
+
+        nav.scrolled .hamburger span {
+            background-color: white;
+        }
+        
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            z-index: 1000;
+        }
+        
+        .hamburger span {
+            width: 30px;
+            height: 3px;
+            background-color: white;
+            margin: 3px 0;
+            transition: all 0.3s ease;
+            background-color: #333; /* Ubah dari white ke hitam */
+        }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 6px);
+        }
+
+        .hamburger.active span {
+            background-color: white !important; /* !important untuk memastikan prioritas styling */
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(8px, -6px);
+        }
+        
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100vh;
+            background-color: #3f2b96;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: right 0.5s ease;
+        }
+        
+        .mobile-nav.active {
+            right: 0;
+        }
+        
+        .mobile-nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 15px 0;
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-nav a:hover {
+            transform: translateX(-5px);
+        }
+        
+        /* Main Content Styling */
+        .container {
+            margin: 100px auto;
+            padding: 160px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 100px;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 9em;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('./background_container.png');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.02;
+            z-index: -1;
+        }
+        
+        .content {
+            flex: 1;
+            padding:20px;
+        }
+        
+        .name {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .quote {
+            font-size: 18px;
+            font-style: italic;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #3f2b96;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: #2a1e6a;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Ukuran gambar yang lebih besar */
+        .image-container {
+            width: 450px;  /* Ukuran awal yang lebih besar */
+            height: 450px; /* Ukuran awal yang lebih besar */
+            position: relative;
+            overflow: hidden;
+            border-radius: 50%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        
+        .active {
+            opacity: 1;
+        }
+
+        /* Media Erni Section */
+        .media-section {
+            margin: 120px auto;
+        }
+
+        .media-header {
+            text-align: center;
+            margin-bottom: 7%;
+        }
+
+        .media-title {
+            font-size: 42px;
+            font-weight: bold;
+            color: #333;
+            display: inline-block;
+        }
+
+        .media-title span {
+            color: #3f2b96;
+            font-weight: 800;
+        }
+
+        .media-articles {
+            display: flex;
+            flex-direction: column;
+            gap: 120px; /* Increased gap between articles */
+        }
+
+        .article-row {
+            display: flex;
+            align-items: center; /* Changed to center for vertical alignment */
+            gap: 80px; /* Gap between content and video */
+            padding: 0 20px; /* Added horizontal padding */
+            position: relative;
+            min-height: 320px; /* Minimum height for the row */
+        }
+
+        .article-video {
+            flex: 1;
+            max-width: 48%; /* Adjusted width */
+            border-radius: 15px;
+            overflow: hidden;
+            aspect-ratio: 16/9;
+            position: relative;
+        }
+
+        .article-video iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 15px;
+        }
+
+        .article-content {
+            flex: 1;
+            max-width: 40%; /* Limited text width */
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Center content vertically */
+        }
+
+        /* Specific styling for odd and even articles */
+        .article-row.odd .article-content {
+            margin-left: 0;
+            margin-right: auto;
+        }
+
+        .article-row.even .article-content {
+            margin-left: auto;
+            margin-right: 0;
+        }
+
+        .article-category {
+            font-size: 10px; /* Smaller category text */
+            text-transform: uppercase;
+            color: #666;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .article-title {
+            font-size: 26px; /* Larger title */
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .article-excerpt {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            max-width: 95%; /* Limit excerpt width */
+        }
+        
+        /* Styling untuk artikel genap */
+        .article-row.even .article-content {
+            text-align: left; /* Left-align text for even articles */
+        }
+
+        .read-more {
+            width:15em;
+            text-align: center;
+            background-color: #3f2b96;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            display: inline-block;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .publikasi-btn {
+            background-color: white;
+            color: #3f2b96;
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            display: inline-block;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            width: 15em;
+            text-align: center;
+        }
+
+        .read-more:hover {
+            background-color: #2a1e6a;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .see-all-btn {
+            display: block;
+            text-align: center;
+            padding-top: 12%; /* Increased margin */
+            padding-bottom: 5%;
+        }
+
+        .see-all-btn-2 {
+            display: block;
+            text-align: center;
+            padding-top: 10%; /* Increased margin */
+            padding-bottom: 5%;
+        }
+
+        .see-all-btn-3 {
+            display: block;
+            text-align: center;
+            padding-top: 5%; /* Increased margin */
+            padding-bottom: 5%;
+        }
+
+        /* Publikasi & Riset Section Styling */
+        .publikasi-section {
+            margin: 120px 0;
+            margin-bottom: 0px;
+            background-color: #3f2b96;
+            padding: 120px 0;
+            width: 100%;
+            color: white;
+        }
+        
+        .publikasi-section .media-header {
+            margin-bottom: 6%;
+            width: 90%;
+            max-width: 1500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .publikasi-section .media-title {
+            color: white;
+        }
+        
+        .publikasi-section .media-title span {
+            color: white;
+        }
+        
+        .publikasi-container {
+            display: flex;
+            flex-direction: column;
+            gap: 100px;
+            width: 90%;
+            max-width: 1500px;
+            margin: 0 auto;
+        }
+        
+        .publikasi-item {
+            display: flex;
+            overflow: hidden;
+            color: white;
+        }
+        
+        .publikasi-content {
+            flex: 1;
+            max-width: 50%; /* Limited text width */
+            padding: 50px 80px 50px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Center content vertically */
+        }
+        
+        /* Styling untuk nomor dan kategori publikasi */
+        .publikasi-number {
+            display: block;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            color: #3f2b96;
+            font-size: 12px;
+            font-weight: bold;
+            width: 36px;
+            height: 36px;
+            margin-bottom: 10px;
+            text-align: center;
+            line-height: 36px;
+        }
+        
+        .publikasi-category {
+            display: block;
+            font-size: 10px;
+            text-transform: uppercase;
+            color: #ffffff;
+            letter-spacing: 1px;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+        
+        .publikasi-title {
+            font-size: 26px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            line-height: 1.3;
+        }
+        
+        .publikasi-excerpt {
+            font-size: 14px;
+            color: #ffffff;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            max-width: 95%;
+        }
+        
+        .publikasi-btn {
+            background-color: white;
+            color: #3f2b96;
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            display: inline-block;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            width: 15em;
+            text-align: center;
+        }
+        
+        .publikasi-btn:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+
+        .publikasi-image {
+            flex: 1; /* Ubah dari flex: 2 menjadi flex: 1 untuk konsisten dengan article-video */
+            max-width: 45%; /* Ubah dari max-width: 40% menjadi max-width: 48% */
+            border-radius: 15px;
+            background-color: #000;
+            overflow: hidden;
+            aspect-ratio: 16/9;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            margin: auto;
+        }
+        
+        .publikasi-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .testimonial-section {
+            background-color: #e0f2fd;
+            padding: 100px 0;
+            margin: 0;
+            width: 100%;
+        }
+    
+        .testimonial-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        
+        .testimonial-title {
+            font-size: 42px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        /* Featured Testimonials with Circle Layout */
+        .testimonial-featured {
+            position: relative;
+            height: 500px;
+            max-width: 900px;
+            margin: 0 auto 80px;
+        }
+        
+        .testimonial-center-image {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+        
+        .erni-center-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Testimonial Bubbles */
+        .testimonial-bubble {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            background-color: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            width: 300px;
+            z-index: 2;
+        }
+
+        .bubble-profile svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .testimonial-bubble-1 {
+            top: 40%;
+        }
+        
+        .testimonial-bubble-2 {
+            top: 20%;
+            right: 5%;
+        }
+        
+        .testimonial-bubble-3 {
+            top: 60%;
+            right: 5%;
+        }
+        
+        .bubble-profile {
+            width: 60px;
+            height: 60px;
+            overflow: hidden;
+            border-radius: 50%;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .bubble-profile img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .bubble-content {
+            flex: 1;
+        }
+        
+        .bubble-title {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .bubble-subtitle {
+            font-size: 10px;
+            color: #666;
+            margin: 0;
+        }
+        
+        /* Testimonial Cards */
+        .testimonial-cards {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 80px;
+            width: 90%;
+            max-width: 1500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .testimonial-card {
+            flex: 1;
+            background-color: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            max-width: 100%;
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .card-profile {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .card-profile img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .card-subtitle {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .card-text {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .perpustakaan-section {
+            margin: 0px 0;
+            padding: 120px 0;
+            background-color: #ffffff;
+        }
+    
+        .perpustakaan-section .article-video img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        .perpustakaan-section .article-video {
+            flex: 1;
+            max-width: 48%;
+            border-radius: 15px;
+            overflow: hidden;
+            aspect-ratio: 16/9;
+            position: relative;
+            background-color: black;
+        }
+
+        /* Styling untuk section Contoh Buku */
+        .contoh-buku-section {
+            margin: 120px 0;
+            padding: 0;
+        }
+        
+        .contoh-buku-title {
+            font-size: 26px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            margin-top: 5em;
+            margin-bottom: 3.5em;
+        }
+
+        .top-books-container {
+            display: flex;
+            justify-content: center;
+            gap: 100px; /* Gap yang lebih besar antara buku 1 dan 2 */
+            margin-bottom: 100px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Styling untuk buku-item di row pertama */
+        .top-books-container .buku-item:first-child {
+            width: 350px; /* Lebar tetap untuk buku pertama */
+            flex-shrink: 0;
+        }
+
+        .top-books-container .buku-item:first-child .buku-image {
+            margin-top: 100px;
+            aspect-ratio: 1/1.3;
+        }
+
+        .top-books-container .buku-item:last-child {
+            width: 400px; /* Lebar tetap untuk buku kedua, lebih besar */
+            flex-shrink: 0;
+        }
+
+        .top-books-container .buku-item:last-child .buku-image {
+            aspect-ratio: 1/1.6; /* Lebih tinggi */
+        }
+        
+        .contoh-buku-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 20px;
+            padding-bottom: 80px;
+        }
+
+        /* Styling umum untuk semua buku-item */
+        .buku-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .buku-image {
+            width: 100%;
+            aspect-ratio: 1/1.2;
+            background-color: #000;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        /* Styling untuk buku-item 3, 4, dan 5 */
+        .contoh-buku-container .buku-item:nth-child(1), 
+        .contoh-buku-container .buku-item:nth-child(3) {
+            width: 80%; /* Lebih kecil */
+            margin: 0 auto;
+        }
+
+        .contoh-buku-container .buku-item:nth-child(2) {
+            width: 95%; /* Lebih besar */
+            margin: 0 auto;
+        }
+
+        .contoh-buku-container .buku-item:nth-child(2) .buku-image {
+            aspect-ratio: 1/1.3; /* Sedikit lebih tinggi */
+        }
+
+        .buku-title {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .buku-author {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .buku-btn {
+            background-color: #3f2b96;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: bold;
+            display: inline-block;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .buku-btn:hover {
+            background-color: #2a1e6a;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .daftar-section {
+            background-color: #3f2b96;
+            padding: 70px 0;
+            width: 100%;
+            margin-top: 0;
+            margin-bottom: 0;
+            color: white;
+        }
+
+        .daftar-inner-container {
+            width: 80%;
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center; /* Membuat konten terpusat di tengah */
+            align-items: center;
+            gap: 60px; /* Jarak antara teks dan tombol */
+        }
+
+        .daftar-content {
+            text-align: left;
+            max-width: 400px; /* Lebar tetap agar konsisten */
+        }
+
+        .daftar-title {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .daftar-text {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .daftar-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .daftar-btn {
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            width: 200px;
+            display: block;
+        }
+
+        .daftar-btn-white {
+            background-color: white;
+            color: #3f2b96;
+        }
+
+        .daftar-btn-outline {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .daftar-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .bekerjasama-section {
+            background-color: #ffffff;
+            padding: 120px 0 200px;
+            width: 100%;
+            position: relative;
+            text-align: center;
+            margin-bottom: 0; /* Ensure no margin at bottom */
+            position: relative; 
+        }
+
+        .bekerjasama-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .bekerjasama-title {
+            font-size: 36px;
+            font-weight: bold;
+            color: #000;
+            text-align: center;
+            line-height: 1.3;
+            margin-top: 200px;
+            margin-bottom: 180px;
+        }
+
+        /* Foto yang beririsan antara dua section */
+        .intersecting-photo {
+            width: 500px;
+            height: 500px;
+            background-color: #ccc;
+            border-radius: 50%;
+            position: absolute;
+            bottom: -150px; /* Setengah foto di luar section bekerjasama */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            background-image: url("./aset_gambar/aset_index/kerjasama_erni.png");
+            background-size: cover;
+            background-position: center;
+            border: 8px solid white;
+        }
+
+        /* Footer Styling */
+        .footer-section {
+            background-color: #3f2b96;
+            padding: 80px 0 30px; /* Padding atas lebih besar untuk memberikan ruang bagi foto */
+            width: 100%;
+            color: white;
+            position: relative;
+            margin-top: 0px; /* Membuat footer overlap dengan bekerjasama section */
+        }
+
+        .footer-container {
+            width: 60%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            padding-top: 80px; /* Ruang tambahan setelah foto */
+        }
+
+        .footer-left {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .footer-name {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .social-circle {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 20%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-circle:hover {
+            background-color: #00ff15;
+            transform: scale(1.1);
+        }
+
+        .social-circle i {
+            color: rgb(255, 255, 255);
+            transition: color 0.3s ease;
+        }
+
+        .social-circle:hover i {
+            color: #3f2b96;
+        }
+
+        .footer-email {
+            font-size: 12px;
+            margin-bottom: 20px;
+        }
+
+        .footer-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .quicklinks-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-link {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-link:hover {
+            opacity: 0.8;
+        }
+
+        .copyright {
+            width: 90%;
+            max-width: 1200px;
+            margin: 50px auto 0;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .container,
+        .media-section,
+        .publikasi-section,
+        .testimonial-section,
+        .perpustakaan-section,
+        .daftar-section,
+        .bekerjasama-section,
+        .footer-section {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        @keyframes slideUpAnimation {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Styling untuk container sebelum breakpoint tablet */
+
+       /* Media Queries Terstruktur */
+
+/* Media Query untuk ukuran layar 1500px */
+        @media (max-width: 1500px) {
+            /* Publikasi */
+            .publikasi-content {
+                padding: 40px 60px 40px 40px;
+            }
+            
+            .publikasi-title {
+                font-size: 24px;
+            }
+
+            .publikasi-section .media-header {
+                margin-bottom: 7.7%;
+            }
+            
+            .publikasi-excerpt {
+                font-size: 13px;
+                margin-bottom: 20px;
+            }
+            
+            .publikasi-btn {
+                font-size: 13px;
+                padding: 10px 20px;
+            }
+            
+            /* Media Erni Section */
+            .article-title {
+                font-size: 24px;
+            }
+            
+            .article-excerpt {
+                font-size: 13px;
+            }
+
+            .perpustakaan-section .article-title {
+                font-size: 24px;
+            }
+        
+            .perpustakaan-section .article-excerpt {
+                font-size: 13px;
+            }
+        }
+
+        /* Media Query untuk ukuran layar 1400px */
+        @media (max-width: 1400px) {
+            /* Container */
+            .container {
+                padding-bottom: 180px;
+                padding-top: 180px;
+                padding-left: 100px;
+                padding-right: 100px;
+                gap: 90px;
+            }
+            
+            .name {
+                font-size: 42px;
+            }
+
+            .publikasi-section .media-header {
+                margin-bottom: 7.7%;
+            }
+            
+            .quote {
+                font-size: 16px;
+            }
+            
+            .image-container {
+                width: 400px;
+                height: 400px;
+            }
+        }
+
+        /* Media Query untuk ukuran layar 1300px */
+        @media (max-width: 1300px) {
+            /* Publikasi */
+            .publikasi-content {
+                padding: 35px 50px 35px 35px;
+            }
+            
+            .publikasi-title {
+                font-size: 22px;
+                margin-bottom: 5px;
+            }
+            
+            .publikasi-excerpt {
+                font-size: 12px;
+                line-height: 1.5;
+            }
+            
+            .publikasi-number {
+                width: 32px;
+                height: 32px;
+                font-size: 11px;
+                line-height: 32px;
+            }
+            
+            .publikasi-category {
+                font-size: 9px;
+                margin-bottom: 12px;
+            }
+
+            .publikasi-section .media-header {
+                margin-bottom: 7.7%;
+            }
+            
+            /* Media Erni Section */
+            .article-row {
+                gap: 50px;
+            }
+            
+            .article-content {
+                max-width: 45%;
+            }
+            
+            .article-title {
+                font-size: 22px;
+            }
+            
+            .article-excerpt {
+                font-size: 12px;
+            }
+
+            .perpustakaan-section .article-row {
+                gap: 50px;
+            }
+            
+            .perpustakaan-section .article-title {
+                font-size: 22px;
+            }
+            
+            .perpustakaan-section .article-excerpt {
+                font-size: 12px;
+            }
+
+            .contoh-buku-container {
+                gap: 30px;
+            }
+        }
+
+        /* Media Query untuk ukuran layar 1200px */
+        @media (max-width: 1200px) {
+            /* Container */
+            .container {
+                padding-bottom: 170px;
+                padding-top: 170px;
+                padding-left: 100px;
+                padding-right: 100px;
+                gap: 60px;
+            }
+            
+            .name {
+                font-size: 36px;
+            }
+            
+            .quote {
+                font-size: 15px;
+            }
+            
+            .image-container {
+                width: 350px;
+                height: 350px;
+            }
+
+            .publikasi-section .media-header {
+                margin-bottom: 7.7%;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+
+            .testimonial-featured {
+                height: 450px;
+            }
+            
+            .testimonial-center-image {
+                width: 400px;
+                height: 400px;
+            }
+            
+        }
+
+        /* Media Query untuk ukuran layar 1100px */
+        @media (max-width: 1100px) {
+            /* Container */
+            .container {
+                padding-bottom: 150px;
+                padding-top: 100px;
+                padding-left: 100px;
+                padding-right: 100px;
+                gap: 60px;
+            }
+            
+            .name {
+                font-size: 32px;
+            }
+            
+            .quote {
+                font-size: 14px;
+                margin-bottom: 25px;
+            }
+            
+            .image-container {
+                width: 300px;
+                height: 300px;
+            }
+            
+            /* Publikasi */
+            .publikasi-content {
+                padding: 30px 40px 30px 30px;
+            }
+            
+            .publikasi-title {
+                font-size: 20px;
+                margin-bottom: 5px;
+            }
+            
+            .publikasi-excerpt {
+                font-size: 11px;
+                margin-bottom: 18px;
+                line-height: 1.4;
+            }
+            
+            .publikasi-btn {
+                font-size: 12px;
+                padding: 10px 18px;
+            }
+            
+            .publikasi-number {
+                width: 30px;
+                height: 30px;
+                font-size: 10px;
+                line-height: 30px;
+                margin-bottom: 8px;
+            }
+            
+            .publikasi-category {
+                font-size: 8px;
+                margin-bottom: 10px;
+            }
+
+            .perpustakaan-section {
+                padding: 80px 0;
+            }
+
+            .contoh-buku-container {
+                gap: 20px;
+            }
+            
+            .buku-title {
+                font-size: 13px;
+            }
+            
+            .buku-author {
+                font-size: 11px;
+            }
+        }
+
+        /* Media Query untuk ukuran layar tablet */
+        @media (max-width: 1024px) {
+            /* Navbar */
+
+            .media-header {
+                margin-bottom: 8%;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            /* Container */
+            .container {
+                flex-direction: column-reverse;
+                padding: 30px 20px;
+                gap: 40px;
+            }
+            
+            .content {
+                margin-top: 30px;
+                padding-right: 0;
+                padding-top: 0;
+                text-align: center;
+            }
+            
+            .image-container {
+                width: 450px;
+                height: 450px;
+            }
+
+            .see-all-btn {
+                display: block;
+                text-align: center;
+                padding-top: 16%; /* Increased margin */
+                padding-bottom: 7.5%;
+            }
+
+            .see-all-btn-2 {
+                display: block;
+                text-align: center;
+                padding-top: 14%; /* Increased margin */
+                padding-bottom: 5%;
+            }
+
+            /* Media Section Responsive */
+            .article-row, 
+            .article-row.odd, 
+            .article-row.even {
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
+                min-height: auto;
+                padding: 0;
+            }
+
+            .article-video {
+                max-width: 100%;
+                aspect-ratio: 16/9;
+                order: -1;
+                position: relative;
+                display: block;
+                height: 0;
+                padding-bottom: 56.25%;
+                margin-bottom: 20px;
+            }
+
+            .publikasi-section .media-header {
+                margin-bottom: 7.7%;
+            }
+
+            .article-content,
+            .article-row.odd .article-content,
+            .article-row.even .article-content {
+                width: 100%;
+                max-width: 100%;
+                text-align: left;
+                margin-left: 0;
+                margin-right: 0;
+                order: 1;
+                padding: 0;
+            }
+
+            .article-category {
+                font-size: 9px;
+            }
+
+            .article-title {
+                font-size: 20px;
+            }
+
+            .article-excerpt,
+            .article-row.even .article-excerpt {
+                max-width: 100%;
+                font-size: 12px;
+                margin-bottom: 20px;
+            }
+            
+            .read-more {
+                width: 160px;
+                max-width: 250px;
+                font-size: 10px;
+            }
+            
+            /* Publikasi Section Responsive */
+            .publikasi-item {
+                flex-direction: column;
+            }
+            
+            .publikasi-content {
+                max-width: 100%;
+                order: 1;
+                text-align: left;
+                margin-left: 0;
+                margin-right: 0;
+                padding: 0;
+            }
+            
+            .publikasi-image {
+                order: 0;
+                max-width: 100%;
+                position: relative;
+                display: block;
+                height: 0;
+                padding-bottom: 56.25%;
+                margin-bottom: 20px;
+            }
+
+            .publikasi-image img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            
+            .publikasi-title {
+                font-size: 20px;
+            }
+            
+            .publikasi-excerpt {
+                font-size: 12px;
+                max-width: 100%;
+                margin-bottom: 25px;
+            }
+            
+            .publikasi-btn {
+                width: 15em;
+                max-width: 250px;
+                font-size: 10px;
+            }
+            
+            .publikasi-number {
+                width: 30px;
+                height: 30px;
+                font-size: 10px;
+                margin-right: 10px;
+                vertical-align: middle;
+            }
+            
+            .publikasi-category {
+                font-size: 10px;
+                line-height: 30px;
+            }
+
+            
+            .testimonial-center-image {
+                width: 400px;
+                height: 400px;
+            }
+            
+            .testimonial-bubble {
+                padding:20px;
+                width: 250px;
+            }
+
+            .testimonial-bubble-1 {
+                top: 40%;
+                left:5%;
+            }
+            
+            .testimonial-bubble-2 {
+                top: 20%;
+                right: 5%;
+            }
+            
+            .testimonial-bubble-3 {
+                top: 60%;
+                right: 5%;
+            }
+            
+            .testimonial-cards {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .perpustakaan-section {
+                padding: 60px 0;
+            }
+
+            .perpustakaan-section .media-header {
+                margin-bottom: 7.7%;
+            }
+            
+            /* Tetap mempertahankan layout horizontal pada tablet */
+            .perpustakaan-section .article-row, 
+            .perpustakaan-section .article-row.odd, 
+            .perpustakaan-section .article-row.even {
+                flex-direction: row;
+                align-items: center;
+                gap: 30px;
+                min-height: 250px;
+                padding: 0 10px;
+            }
+            
+            /* Mengecilkan ukuran gambar tapi tetap di samping */
+            .perpustakaan-section .article-video {
+                max-width: 50%;
+                position: relative;
+                height: auto;
+                aspect-ratio: 16/9;
+                order: unset;
+                padding-bottom: 0;
+                margin-bottom: 0;
+            }
+            
+            /* Mengecilkan ukuran konten teks */
+            .perpustakaan-section .article-content {
+                max-width: 45%;
+                order: unset;
+            }
+            
+            /* Menjaga posisi konten */
+            .perpustakaan-section .article-row.odd .article-content {
+                margin-left: 0;
+                margin-right: auto;
+            }
+            
+            .perpustakaan-section .article-row.even .article-content {
+                margin-left: auto;
+                margin-right: 0;
+            }
+            
+            /* Menyesuaikan ukuran font */
+            .perpustakaan-section .article-title {
+                font-size: 20px;
+            }
+            
+            .perpustakaan-section .article-excerpt {
+                font-size: 12px;
+                margin-bottom: 20px;
+            }
+            
+            /* Memastikan gambar/kotak hitam berada pada posisi yang tepat */
+            .perpustakaan-section .article-video img,
+            .perpustakaan-section .article-video > div {
+                position: relative;
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+            
+            /* Memastikan gambar/kotak hitam berada di kanan pada odd dan kiri pada even */
+            .perpustakaan-section .article-row.odd .article-video {
+                order: 2;
+            }
+            
+            .perpustakaan-section .article-row.even .article-video {
+                order: 1;
+            }
+            
+            .perpustakaan-section .article-row.odd .article-content {
+                order: 1;
+            }
+            
+            .perpustakaan-section .article-row.even .article-content {
+                order: 2;
+            }
+
+            .contoh-buku-title {
+                font-size: 24px;
+            }
+
+            .top-books-container {
+                gap: 60px;
+            }
+            
+            .top-books-container .buku-item:first-child {
+                width: 280px;
+            }
+            
+            .top-books-container .buku-item:last-child {
+                width: 320px;
+            }
+            
+            .contoh-buku-container {
+                gap: 30px;
+            }
+            
+            /* Mengurangi sedikit ukuran pada tablet tetapi tetap mempertahankan proporsi */
+            .buku-item:nth-child(1) {
+                width: 85%;
+            }
+            
+            .buku-item:nth-child(2) {
+                width: 100%;
+            }
+            
+            .buku-item:nth-child(3), 
+            .buku-item:nth-child(5) {
+                width: 80%;
+            }
+            
+            .buku-item:nth-child(4) {
+                width: 95%;
+            }
+
+            .daftar-inner-container {
+                gap: 40px; /* Mengurangi jarak pada tablet */
+            }
+            
+            .daftar-title {
+                font-size: 30px;
+            }
+            
+            .daftar-text {
+                font-size: 13px;
+            }
+            
+            .daftar-btn {
+                padding: 10px 20px;
+                font-size: 13px;
+                width: 180px;
+            }
+
+            .intersecting-photo {
+                width: 420px;
+                height: 420px;
+                bottom: -120px;
+            }
+
+            .footer-container {
+                width: 70%;
+                max-width: 1200px;
+            }
+        }
+
+        /* Media Query untuk ukuran layar mobile */
+        @media (max-width: 768px) {
+            /* Container */
+            .name {
+                font-size: 36px;
+            }
+
+            .container {
+                padding-top: 80px;
+                padding-bottom: 80px;
+            }
+            
+            .image-container {
+                width: 370px;
+                height: 370px;
+            }
+
+            .media-section .media-header {
+                margin-bottom: 70px;
+            }
+
+            /* Media Section */
+            .media-title {
+                font-size: 32px;
+            }
+
+            .article-title {
+                font-size: 18px;
+            }
+
+            .media-articles {
+                gap: 50px;
+            }
+
+            .see-all-btn {
+                display: block;
+                text-align: center;
+                padding-top: 30%; /* Increased margin */
+                padding-bottom: 7.5%;
+            }
+
+            .see-all-btn-2 {
+                display: block;
+                text-align: center;
+                padding-top: 26%; /* Increased margin */
+                padding-bottom: 21%;
+            }
+
+            .see-all-btn-3 {
+                display: block;
+                text-align: center;
+                padding-top: 12.5%; /* Increased margin */
+                padding-bottom: 21%;
+            }
+            
+            .article-content,
+            .article-row.odd .article-content,
+            .article-row.even .article-content {
+                max-width: 100%;
+            }
+
+            .article-category {
+                font-size: 8px;
+                margin-bottom: 10px;
+            }
+            
+            .article-excerpt {
+                font-size: 11px;
+                width: 90%;
+            }
+
+            .read-more {
+                width: 160px;
+                max-width: 250px;
+                font-size: 10px;
+            }
+            
+            /* Publikasi Section Mobile */
+            .publikasi-section {
+                padding: 60px 0;
+            }
+
+            .publikasi-section .media-header {
+                margin-bottom: 70px;
+            }
+            
+            .publikasi-content {
+                max-width: 90%;
+            }
+            
+            .publikasi-title {
+                font-size: 18px;
+            }
+            
+            .publikasi-excerpt {
+                font-size: 11px;
+            }
+            
+            .publikasi-image {
+                min-height: 200px;
+            }
+
+            .publikasi-image img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            
+            .publikasi-number {
+                width: 28px;
+                height: 28px;
+                font-size: 9px;
+                margin-right: 8px;
+                vertical-align: middle;
+            }
+            
+            .publikasi-category {
+                font-size: 9px;
+                line-height: 28px;
+            }
+
+            .testimonial-section {
+                padding: 60px 0;
+            }
+            
+            .testimonial-title {
+                font-size: 32px;
+            }
+            
+            .testimonial-center-image {
+                width: 400px;
+                height: 400px;
+            }
+
+            .testimonial-bubble {
+                width: 200px;
+                display: none;
+            }
+            
+            .bubble-profile {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .bubble-title {
+                font-size: 12px;
+            }
+            
+            .bubble-subtitle {
+                font-size: 9px;
+            }
+
+            .perpustakaan-section .media-header {
+                margin-bottom: 70px;
+            }
+
+            .perpustakaan-section .article-row, 
+            .perpustakaan-section .article-row.odd, 
+            .perpustakaan-section .article-row.even {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .perpustakaan-section .article-video {
+                max-width: 100%;
+                order: -1 !important;
+                height: 0;
+                padding-bottom: 56.25%;
+                margin-bottom: 20px;
+            }
+            
+            .perpustakaan-section .article-content {
+                max-width: 100%;
+                order: 1 !important;
+            }
+            
+            .perpustakaan-section .article-video img,
+            .perpustakaan-section .article-video > div {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+
+            .contoh-buku-title {
+                font-size: 20px;
+                margin-bottom: -40px;
+            }
+            
+
+            
+            .contoh-buku-container, .top-books-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 60px;
+            }
+
+            .contoh-buku-container {
+                margin-top: -60px;
+            }
+            
+            .contoh-buku-container .buku-item {
+                width: 70% !important;
+                max-width: 250px;
+            }
+            
+            .contoh-buku-container {
+                display: flex;
+                flex-direction: column;
+                gap: 60px;
+            }
+            
+            .buku-item {
+                width: 100%;
+                max-width: 250px;
+                margin: 0 auto;
+            }
+            
+            .buku-item:nth-child(n) {
+                grid-column: unset;
+                grid-row: unset;
+            }
+            
+            .buku-image {
+                aspect-ratio: 1/1.2 !important;
+            }
+
+            .daftar-inner-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+            }
+            
+            .daftar-content {
+                text-align: center;
+                max-width: 100%;
+            }
+            
+            .daftar-title {
+                font-size: 28px;
+            }
+            
+            .daftar-text {
+                font-size: 12px;
+                max-width: 80%;
+                margin: 0 auto;
+            }
+            
+            .daftar-buttons {
+                align-items: center;
+            }
+
+            .bekerjasama-title {
+                font-size: 30px;
+                font-weight: bold;
+                color: #000;
+                text-align: center;
+                line-height: 1.3;
+                margin-top: 200px;
+                margin-bottom: 100px;
+            }
+
+            /* Foto yang beririsan antara dua section */
+            .intersecting-photo {
+                width: 420px;
+                height: 420px;
+                background-color: #ccc;
+                border-radius: 50%;
+                position: absolute;
+                bottom: -150px; /* Setengah foto di luar section bekerjasama */
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 10;
+                background-image: url("./aset_gambar/aset_index/kerjasama_erni.png");
+                background-size: cover;
+                background-position: center;
+                border: 8px solid white;
+            }
+
+            .footer-container {
+                width: 85%;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 40px;
+                padding-top: 50px;
+            }
+            
+            /* Center footer left content */
+            .footer-left {
+                align-items: center;
+                width: 100%;
+            }
+            
+            /* Center social links */
+            .social-links {
+                justify-content: center;
+            }
+            
+            /* Center footer right content */
+            .footer-right {
+                align-items: center;
+                width: 100%;
+            }
+            
+            /* Center footer links */
+            .footer-links {
+                align-items: center;
+            }
+            
+            /* Adjust email spacing */
+            .footer-email {
+                margin-bottom: 10px;
+            }
+            
+            /* Adjust quicklinks title margin */
+            .quicklinks-title {
+                margin-bottom: 15px;
+            }
+            
+            /* Adjust copyright section */
+            .copyright {
+                padding-top: 30px;
+                margin-top: 40px;
+            }
+            
+            /* Footer section padding adjustments */
+            .footer-section {
+                padding: 90px 0 30px;
+            }
+        }
+
+        /* Ketika body punya class 'loaded', semua child elemen akan animate */
+        body.loaded .container,
+        body.loaded .media-section,
+        body.loaded .publikasi-section,
+        body.loaded .testimonial-section,
+        body.loaded .perpustakaan-section,
+        body.loaded .daftar-section,
+        body.loaded .bekerjasama-section,
+        body.loaded .footer-section {
+            animation: slideUpAnimation 0.8s ease-out forwards;
+        }
+
+        /* Stagger delay untuk elemen-elemen berbeda */
+        body.loaded .container {
+            animation-delay: 0.05s;
+        }
+
+        body.loaded .media-section {
+            animation-delay: 0.2s;
+        }
+
+        body.loaded .publikasi-section {
+            animation-delay: 0.3s;
+        }
+
+        body.loaded .testimonial-section {
+            animation-delay: 0.4s;
+        }
+
+        body.loaded .perpustakaan-section {
+            animation-delay: 0.5s;
+        }
+
+        body.loaded .daftar-section {
+            animation-delay: 0.6s;
+        }
+
+        body.loaded .bekerjasama-section {
+            animation-delay: 0.7s;
+        }
+
+        body.loaded .footer-section {
+            animation-delay: 0.8s;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="wrapper nav-container">
+            <div class="logo">
+                <a href="./index.html">ER</a>
+
+            </div>
+            <div class="nav-links">
+                <a href="./about.html">About</a>
+                <a href="./media.html">Media</a>
+                <a href="./testimonial.html">Testimonials</a>
+                <a href="./publikasi.html">Publications</a>
+                <a href="./library-login.html">Library</a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="mobile-nav">
+            <a href="./about.html">About</a>
+            <a href="./media.html">Media</a>
+            <a href="./testimonial.html">Testimonials</a>
+            <a href="./publikasi.html">Publications</a>
+            <a href="./library-login.html">Library</a>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <div class="wrapper">
+        <div class="container">
+            <div class="content">
+                <h1 class="name">ERNI RAHMAWATI</h1>
+                <p class="quote">*..QUOTE/KUTIPAN DARI TANTE ERNI..*</p>
+                <a href="./about.html" class="btn">TENTANG KAK ERNI</a>
+            </div>
+            
+            <div class="image-container">
+                <img src="./aset_gambar/aset_index/foto_erni_landingpage.png" alt="Erni Rahmawati 1" class="profile-image active" id="img1">
+                <img src="./aset_gambar/aset_index/foto_erni_landingpage.png" alt="Erni Rahmawati 2" class="profile-image" id="img2">
+                <img src="./aset_gambar/aset_index/foto_erni_landingpage.png" alt="Erni Rahmawati 3" class="profile-image" id="img3">
+            </div>
+        </div>
+
+        <!-- Media Erni Section -->
+        <section class="media-section">
+            <div class="media-header">
+                <h2 class="media-title"><span>MEDIA</span> ERNI</h2>
+            </div>
+            
+            <div class="media-articles">
+                <!-- Article 1 - Teks di kiri, video di kanan (GANJIL) -->
+                <div class="article-row odd">
+                    <div class="article-content">
+                        <p class="article-category">Kriminologi</p>
+                        <h3 class="article-title">Criminology 101 - Pengantar Kriminologi</h3>
+                        <p class="article-excerpt">Membahas tentang apa yang akan dipelajari di jurusan kriminologi</p>
+                        <a href="./video-detail.html?id=1" class="read-more">AYO TONTON</a>
+                    </div>
+                    <div class="article-video">
+                        <iframe src="https://www.youtube.com/embed/txS-6F2iHG0" title="Video Youtube" allowfullscreen></iframe>
+                    </div>
+                </div>
+                
+                <!-- Article 2 - Video di kiri, teks di kanan (GENAP) -->
+                <div class="article-row even">
+                    <div class="article-video">
+                        <iframe src="https://www.youtube.com/embed/CUZRw8J8h0s" title="Video Instagram" allowfullscreen></iframe>
+                    </div>
+                    <div class="article-content">
+                        <p class="article-category">Opini</p>
+                        <h3 class="article-title">Money Laundry</h3>
+                        <p class="article-excerpt">Membahas bagaimana skema money laundry bekerja</p>
+                        <a href="./video-detail.html?id=6" class="read-more">AYO TONTON</a>
+                    </div>
+                </div>
+                
+                <!-- Article 3 - Teks di kiri, video di kanan (GANJIL) -->
+                <div class="article-row odd">
+                    <div class="article-content">
+                        <p class="article-category">Psikologi</p>
+                        <h3 class="article-title">Sebab NPD</h3>
+                        <p class="article-excerpt">Membahas penyebab NPD.</p>
+                        <a href="./video-detail.html?id=14" class="read-more">AYO TONTON</a>
+                    </div>
+                    <div class="article-video">
+                        <iframe src="https://www.youtube.com/embed/3cGqVYXhbmI" title="Video TikTok" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="see-all-btn">
+                <a href="./media.html" class="btn" style="background-color: #3f2b96; color: white;">LIHAT SEMUA</a>
+            </div>
+        </section>
+        
+        <!-- Publikasi & Riset Section -->
+        </section>
+    </div> <!-- end of wrapper for main content and media section -->
+    
+    <!-- Publikasi section outside of wrapper for full width -->
+    <section class="publikasi-section">
+        <div class="media-header">
+            <h2 class="media-title"><span>PUBLIKASI</span> & RISET</h2>
+        </div>
+        
+        <div class="publikasi-container">
+                <!-- Publikasi Item 1 -->
+                <div class="publikasi-item">
+                    <div class="publikasi-content">
+                        <p class="publikasi-category">PUBLIKASI</p>
+                        <h3 class="publikasi-title">Integrated Remedy System</h3>
+                        <p class="publikasi-excerpt">Membahas pengembangan Integrated Remedy System sebagai sistem baru untuk memberikan pemulihan kepada korban yang mengalami kesalahan dalam proses peradilan pidana di Indonesia.</p>
+                        <a href="./isi-publikasi-riset.html?id=1" class="publikasi-btn">AYO BACA</a>
+                    </div>
+                    <div class="publikasi-image">
+                        <img src="./aset_gambar/aset_index/publikasi_1.png" alt="Publikasi Image">
+                    </div>
+                </div>
+                
+                <!-- Publikasi Item 2 -->
+                <div class="publikasi-item">
+                    <div class="publikasi-content">
+                        <p class="publikasi-category">PUBLIKASI</p>
+                        <h3 class="publikasi-title">MENGAPA KEJAHATAN TERJADI TERUS?</h3>
+                        <p class="publikasi-excerpt">Membahas kesalahan proses peradilan pidana (miscarriages of justice) di Indonesia yang menyasar kelompok marginal</p>
+                        <a href="./isi-publikasi-riset.html?id=2" class="publikasi-btn">AYO BACA</a>
+                    </div>
+                    <div class="publikasi-image">
+                        <img src="./aset_gambar/aset_index/publikasi_2.png" alt="Publikasi Image">
+                    </div>
+                </div>
+                
+                <!-- Publikasi Item 3 -->
+                <div class="publikasi-item">
+                    <div class="publikasi-content">
+                        <p class="publikasi-category">PUBLIKASI</p>
+                        <h3 class="publikasi-title">MENGAPA KEJAHATAN TERJADI TERUS?</h3>
+                        <p class="publikasi-excerpt">Mengkaji tentang supremasi kulit putih dan rasisme struktural dalam film "The Shawshank Redemption"</p>
+                        <a href="./isi-publikasi-riset.html?id=3" class="publikasi-btn">AYO BACA</a>
+                    </div>
+                    <div class="publikasi-image">
+                        <img src="./aset_gambar/aset_index/publikasi_3.png" alt="Publikasi Image">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="see-all-btn-2">
+                <a href="./publikasi.html" class="btn" style="background-color: #ffffff; color: #3f2b96;">LIHAT SEMUA</a>
+            </div>
+        </section>
+
+        <section class="testimonial-section">
+            <div class="wrapper">
+                <div class="testimonial-header">
+                    <h2 class="testimonial-title">ERNI DI MATA MEREKA</h2>
+                </div>
+                
+                <div class="testimonial-featured">
+                    <div class="testimonial-center-image">
+                        <img src="./aset_gambar/aset_index/testimoni_erni.png" alt="Erni Rahmawati Portrait" class="erni-center-img">
+                    </div>
+                    
+                    <div class="testimonial-bubble testimonial-bubble-1">
+                        <div class="bubble-profile">
+                            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Background Circle -->
+                                <circle cx="50" cy="50" r="48" fill="#3f2b96"/>
+                                <!-- Head -->
+                                <circle cx="50" cy="35" r="18" fill="white"/>
+                                <!-- Body -->
+                                <path d="M 32 55 L 32 80 L 68 80 L 68 55 Q 68 50 60 50 L 40 50 Q 32 50 32 55" fill="white"/>
+                            </svg>
+                        </div>
+                        <div class="bubble-content">
+                            <h4 class="bubble-title">XXXXXXXXXX</h4>
+                            <p class="bubble-subtitle">LOREM IPSUM DOLOR SIT AMET FUHSDFGH</p>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-bubble testimonial-bubble-2">
+                        <div class="bubble-profile">
+                            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Background Circle -->
+                                <circle cx="50" cy="50" r="48" fill="#3f2b96"/>
+                                <!-- Head -->
+                                <circle cx="50" cy="35" r="18" fill="white"/>
+                                <!-- Body -->
+                                <path d="M 32 55 L 32 80 L 68 80 L 68 55 Q 68 50 60 50 L 40 50 Q 32 50 32 55" fill="white"/>
+                            </svg>
+                        </div>
+                        <div class="bubble-content">
+                            <h4 class="bubble-title">XXXXXXXXXX</h4>
+                            <p class="bubble-subtitle">LOREM IPSUM DOLOR SIT AMET FUHSDFGH</p>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-bubble testimonial-bubble-3">
+                        <div class="bubble-profile">
+                            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Background Circle -->
+                                <circle cx="50" cy="50" r="48" fill="#3f2b96"/>
+                                <!-- Head -->
+                                <circle cx="50" cy="35" r="18" fill="white"/>
+                                <!-- Body -->
+                                <path d="M 32 55 L 32 80 L 68 80 L 68 55 Q 68 50 60 50 L 40 50 Q 32 50 32 55" fill="white"/>
+                            </svg>
+                        </div>
+                        <div class="bubble-content">
+                            <h4 class="bubble-title">XXXXXXXXXX</h4>
+                            <p class="bubble-subtitle">LOREM IPSUM DOLOR SIT AMET FUHSDFGH</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-cards">
+                    <div class="testimonial-card">
+                        <div class="card-header">
+                            <div class="card-profile">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                    <!-- Background Circle -->
+                                    <circle cx="50" cy="50" r="48" fill="#3f2b96"/>
+                                    <!-- Head -->
+                                    <circle cx="50" cy="35" r="18" fill="white"/>
+                                    <!-- Body -->
+                                    <path d="M 32 55 L 32 80 L 68 80 L 68 55 Q 68 50 60 50 L 40 50 Q 32 50 32 55" fill="white"/>
+                                </svg>
+                            </div>
+                            <div class="card-info">
+                                <h4 class="card-title">XXXXXXXXXX</h4>
+                                <p class="card-subtitle">XXXXXXXXXX</p>
+                            </div>
+                        </div>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fuiscing gravida cursus tellus, ut interdum enim lobortis eget. Aenean fermentum, turpis nec sagittis aliquet, magna sem cursus lorem, in fermentum sapien justo nec arcu. Fusce vel sapien consectetur, auctor ante ac, condimentum lorem. Nam dignissim elit rhoncus feugiat consequat. Sed rutrum eut est amet elementum egestas. Aliquam suscipit ultrices placerat. Proin ac ipsum faucibus, aliquam justo ac, efficitur dolor. Vestibulum euismod commodo enim, at porttitor velit.</p>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="card-header">
+                            <div class="card-profile">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                    <!-- Background Circle -->
+                                    <circle cx="50" cy="50" r="48" fill="#3f2b96"/>
+                                    <!-- Head -->
+                                    <circle cx="50" cy="35" r="18" fill="white"/>
+                                    <!-- Body -->
+                                    <path d="M 32 55 L 32 80 L 68 80 L 68 55 Q 68 50 60 50 L 40 50 Q 32 50 32 55" fill="white"/>
+                                </svg>
+                            </div>
+                            <div class="card-info">
+                                <h4 class="card-title">XXXXXXXXXX</h4>
+                                <p class="card-subtitle">XXXXXXXXXX</p>
+                            </div>
+                        </div>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fuiscing gravida cursus tellus, ut interdum enim lobortis eget. Aenean fermentum, turpis nec sagittis aliquet, magna sem cursus lorem, in fermentum sapien justo nec arcu. Fusce vel sapien consectetur, auctor ante ac, condimentum lorem. Nam dignissim elit rhoncus feugiat consequat. Sed rutrum eut est amet elementum egestas. Aliquam suscipit ultrices placerat. Proin ac ipsum faucibus, aliquam justo ac, efficitur dolor. Vestibulum euismod commodo enim, at porttitor velit.</p>
+                    </div>
+                </div>
+                
+                <div class="see-all-btn-3">
+                    <a href="./testimonial.html" class="btn" style="background-color: #3f2b96; color: white;">LIHAT SEMUA</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="perpustakaan-section">
+            <div class="wrapper">
+                <div class="media-header">
+                    <h2 class="media-title"><span>PERPUSTAKAAN</span></h2>
+                </div>
+                
+                <div class="media-articles">
+                    <!-- Perpustakaan Item 1 - Teks di kiri, gambar di kanan (GANJIL) -->
+                    <div class="article-row odd">
+                        <div class="article-content">
+                            <h3 class="article-title">BUKU "LANGKA" TELAH HADIR!</h3>
+                            <p class="article-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Commodo gravida cursus tellus, ut interdum enim lobortis eget. Aenean fermentum, turpis nec sagittis aliquet, magna sem cursus lorem, in fermentum sapien.</p>
+                            
+                        </div>
+                        <div class="article-video">
+                            <img src="/api/placeholder/600/400" alt="Buku Langka">
+                        </div>
+                    </div>
+                    
+                    <!-- Perpustakaan Item 2 - Gambar di kiri, teks di kanan (GENAP) -->
+                    <div class="article-row even">
+                        <div class="article-video">
+                            <img src="/api/placeholder/600/400" alt="Koleksi Buku Gratis">
+                        </div>
+                        <div class="article-content">
+                            <h3 class="article-title">SEMUANYA GRATIS!</h3>
+                            <p class="article-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Commodo gravida cursus tellus, ut interdum enim lobortis eget. Aenean fermentum, turpis nec sagittis aliquet, magna sem cursus lorem, in fermentum sapien.</p>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contoh-buku-title">CONTOH BUKU</div>
+
+                <div class="top-books-container">
+                    <div class="buku-item">
+                      <div class="buku-image"></div>
+                      <h3 class="buku-title">BUKU PANGERAN DIPONEGORO</h3>
+                      <p class="buku-author">BY RADEN SALEH</p>
+                      <a href="#" class="buku-btn">BACA SEKARANG</a>
+                    </div>
+                    
+                    <div class="buku-item">
+                      <div class="buku-image"></div>
+                      <h3 class="buku-title">BUKU PANGERAN DIPONEGORO</h3>
+                      <p class="buku-author">BY RADEN SALEH</p>
+                      <a href="#" class="buku-btn">BACA SEKARANG</a>
+                    </div>
+                </div>
+
+                <div class="contoh-buku-container">
+                    
+                    <div class="buku-item">
+                        <div class="buku-image"></div>
+                        <h3 class="buku-title">PEMBANTAIAN BUKIT DURI</h3>
+                        <p class="buku-author">BY RADEN SALEH</p>
+                        <a href="#" class="buku-btn">BACA SEKARANG</a>
+                    </div>
+                    
+                    <div class="buku-item">
+                        <div class="buku-image"></div>
+                        <h3 class="buku-title">PEMBANTAIAN BUKIT DURI</h3>
+                        <p class="buku-author">BY RADEN SALEH</p>
+                        <a href="#" class="buku-btn">BACA SEKARANG</a>
+                    </div>
+                    
+                    <div class="buku-item">
+                        <div class="buku-image"></div>
+                        <h3 class="buku-title">PEMBANTAIAN BUKIT DURI</h3>
+                        <p class="buku-author">BY RADEN SALEH</p>
+                        <a href="#" class="buku-btn">BACA SEKARANG</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="daftar-section">
+            <div class="daftar-inner-container">
+                <div class="daftar-content">
+                    <h2 class="daftar-title">SEMUANYA GRATIS!</h2>
+                    <p class="daftar-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur gravid...</p>
+                </div>
+                <div class="daftar-buttons">
+                    <a href="./library-daftar.html" class="daftar-btn daftar-btn-white">DAFTAR BUKU</a>
+                    <a href="./library-login.html" class="daftar-btn daftar-btn-outline">SUDAH PUNYA AKUN</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Bekerjasama dengan Erni Rahmawati -->
+
+        <section class="bekerjasama-section">
+            <div class="bekerjasama-container">
+                <h2 class="bekerjasama-title">BEKERJASAMA DENGAN<br>ERNI RAHMAWATI</h2>
+            </div>
+            
+            <!-- Pindahkan foto ke dalam section -->
+            <div class="photo-container">
+                <div class="intersecting-photo"></div>
+            </div>
+        </section>
+
+        <!-- Footer Section -->
+        <footer class="footer-section">
+            <div class="footer-container">
+                <div class="footer-left">
+                    <h3 class="footer-name">ERNI RAHMAWATI</h3>
+                    <div class="social-links">
+                        <!-- YouTube -->
+                        <a href="https://www.youtube.com/@ErniKriminologi" class="social-circle" target="_blank">
+                            <i class="fab fa-youtube" style="font-size: 24px;"></i>
+                        </a>
+                        
+                        <!-- TikTok -->
+                        <a href="https://www.tiktok.com/@erni.kriminologi" class="social-circle" target="_blank">
+                            <i class="fab fa-tiktok" style="font-size: 24px;"></i>
+                        </a>
+                        
+                        <!-- Instagram -->
+                        <a href="https://www.instagram.com/erni_kriminologi/?hl=en" class="social-circle" target="_blank">
+                            <i class="fab fa-instagram" style="font-size: 24px;"></i>
+                        </a>
+                    </div>
+                    <p class="footer-email">ERNIRAHMAWATI@GMAIL.COM</p>
+                </div>
+                
+                <div class="footer-right">
+                    <h3 class="quicklinks-title">QUICK LINKS</h3>
+                    <div class="footer-links">
+                        <a href="./about.html" class="footer-link">ABOUT</a>
+                        <a href="./media.html" class="footer-link">MEDIA</a>
+                        <a href="./publikasi.html" class="footer-link">PUBLICATIONS</a>
+                        <a href="./testimonial.html" class="footer-link">TESTIMONIALS</a>
+                        <a href="./library-login.html" class="footer-link">LIBRARY</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                ©COPYRIGHT BY ERNI RAHMAWATI 2025
+            </div>
+        </footer>
+
+    </div>
+    
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const navbar = document.querySelector('nav');
+            
+            function handleScroll() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            }
+            
+            window.addEventListener('scroll', handleScroll);
+
+            window.addEventListener('load', function() {
+                document.body.classList.add('loaded');
+            });
+
+
+
+            
+            // Cek posisi scroll saat halaman dimuat
+            handleScroll();
+        });
+
+        // Image Slider
+        let currentImage = 1;
+        const totalImages = 3;
+        
+        function changeImage() {
+            // Hide all images
+            for(let i = 1; i <= totalImages; i++) {
+                document.getElementById(`img${i}`).classList.remove('active');
+            }
+            
+            // Show current image
+            document.getElementById(`img${currentImage}`).classList.add('active');
+            
+            // Update counter for next image
+            currentImage = currentImage >= totalImages ? 1 : currentImage + 1;
+        }
+        
+        // Change image every 3 seconds
+        setInterval(changeImage, 3000);
+        
+        // Hamburger Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const mobileNav = document.querySelector('.mobile-nav');
+        
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            // Prevent scrolling when menu is open
+            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : 'auto';
+        });
+        
+        // Close menu when clicking on a link
+        const mobileLinks = document.querySelectorAll('.mobile-nav a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                mobileNav.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+    </script>
+</body>
+</html>

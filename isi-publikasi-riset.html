@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isi Publikasi & Riset - Erni Rahmawati</title>
+    <link rel="icon" type="image/png" href="./aset_gambar/aset_index/foto_erni_landingpage.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        html, body {
+            overflow-x: hidden; /* Ini akan 'memotong' paksa semua yang kelewat batas */
+        }
+        
+        /* Wrapper untuk alignment yang konsisten */
+        .wrapper {
+            width: 90%;
+            max-width: 1500px;
+            margin: 0 auto;
+        }
+        
+        /* Navbar Styling */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background-color: #3f2b96;
+            padding: 30px 0;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo a {
+            color: #ffffff; /* Ubah dari white ke hitam */
+            text-decoration: none;
+            font-size: 24px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        
+
+        .logo:hover {
+            color: #3f2b96;
+            text-decoration: underline;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        nav.scrolled {
+            background-color: #ffffff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        nav.scrolled .logo a,
+        nav.scrolled .nav-links a {
+            color: #000000;
+        }
+
+        nav.scrolled .hamburger span {
+            background-color: #333;
+        }
+        
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            z-index: 1000;
+        }
+        
+        .hamburger span {
+            width: 30px;
+            height: 3px;
+            background-color: white;
+            margin: 3px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 6px);
+        }
+
+        .hamburger.active span {
+            background-color: white !important;
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(8px, -6px);
+        }
+        
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100vh;
+            background-color: #3f2b96;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: right 0.5s ease;
+        }
+        
+        .mobile-nav.active {
+            right: 0;
+        }
+        
+        .mobile-nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 15px 0;
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-nav a:hover {
+            transform: translateX(-5px);
+        }
+
+
+
+        /* Artikel Section */
+        .artikel-section {
+            padding: 150px 0 80px;
+            background-color: #fff;
+        }
+        
+        .back-button {
+            margin-bottom: 40px;
+        }
+        
+        .back-button a {
+            background-color: #3f2b96;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            padding: 10px 25px;
+            border-radius: 30px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .back-button a:hover {
+            background-color: #2a1a70;
+        }
+        
+        .artikel-header {
+            position: relative;
+            margin-bottom: 60px;
+            text-align: center;
+            padding-top: 30px;
+        }
+
+        .artikel-container {
+            position: relative;
+            margin-bottom: 60px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .artikel-dots {
+            position: absolute;
+            left: 0;
+            top: -10px; /* Posisi di atas judul */
+            display: flex;
+            gap: 4px;
+        }
+        
+        .dot {
+            width: 8px;
+            height: 8px;
+            background-color: #000;
+        }
+        
+        
+        .artikel-title {
+            font-size: 38px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .artikel-by {
+            font-size: 12px;
+            margin-bottom: 0;
+            color: #666;
+        }
+        
+        .artikel-content {
+            max-width: 800px;
+            margin: 0 auto 60px;
+            line-height: 1.8;
+            text-align: justify;
+        }
+        
+        .artikel-content p {
+            margin-bottom: 20px;
+            font-size: 16px;
+            color: #333;
+        }
+        
+        .artikel-share {
+            text-align: center;
+            margin-bottom: 80px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        /* Artikel Lain Section */
+        .artikel-lain-section {
+            background-color: #3f2b96;
+            padding: 80px 20px;
+            color: white;
+        }
+        
+        .artikel-lain-title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 60px;
+        }
+        
+        .artikel-lain-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Tetap 2 kolom seperti aslinya */
+            gap: 60px;
+            width: 100%;
+            justify-items: center; /* Tambahkan ini untuk memusatkan grid items */
+        }
+        
+        .artikel-item {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            width: 100%; /* Gunakan lebar penuh dalam grid cell */
+            max-width: 450px; /* Batasi lebar maksimum */
+        }
+
+        
+        
+        .artikel-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .artikel-item-cover {
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            width: 450px; /* Lebar penuh dari parent */
+            height: 450px; /* Tinggi tetap untuk semua gambar */
+            margin-bottom: 15px;
+            overflow: hidden; /* Untuk memastikan gambar tidak keluar dari container */
+        }
+        
+        .artikel-item-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Penting: ini memastikan gambar menutupi area dengan baik */
+            object-position: center; /* Posisi gambar di tengah */
+        }
+        
+        .artikel-item-dots {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 10px;
+        }
+        
+        .artikel-item-dot {
+            width: 8px;
+            height: 8px;
+            background-color: white;
+        }
+        
+        .artikel-item-title {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .artikel-item-category {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+
+        /*FOOTER SECTION */
+        .footer-section {
+            background-color: #ffffff;
+            padding: 20px 0 30px;
+            width: 100%;
+            color: #000;
+            position: relative;
+            margin-top: 0px;
+        }
+
+        .footer-container {
+            width: 60%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            padding-top: 80px;
+        }
+
+        .footer-left {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .footer-name {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #000;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .social-circle {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 20%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-circle:hover {
+            background-color: #00ff15;
+            transform: scale(1.1);
+        }
+
+        .social-circle i {
+            color: rgb(0, 0, 0);
+            transition: color 0.3s ease;
+        }
+
+        .social-circle:hover i {
+            color: #3f2b96;
+        }
+
+        .footer-email {
+            font-size: 12px;
+            margin-bottom: 20px;
+            color:#000;
+        }
+
+        .footer-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .quicklinks-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color:#000;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-link {
+            color: #000;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-link:hover {
+            opacity: 0.8;
+        }
+
+        .copyright {
+            width: 90%;
+            max-width: 1200px;
+            margin: 50px auto 0;
+            padding-top: 40px;
+            border-top: 1px solid rgba(0, 0, 0, 0.2);
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+        }
+
+        /* PDF Viewer Styling */
+        .pdf-viewer-container {
+            max-width: 900px;
+            margin: 0 auto 60px;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .pdf-viewer-container iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+            border-radius: 4px;
+            background-color: white;
+        }
+
+        .pdf-download-button {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .pdf-download-button a {
+            background-color: #3f2b96;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            padding: 12px 30px;
+            border-radius: 30px;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .pdf-download-button a:hover {
+            background-color: #2a1a70;
+        }
+
+        .artikel-section,
+        .artikel-lain-section,
+        .footer-section {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        @keyframes slideUpAnimation {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        @media (max-width:1300px) {
+            .artikel-item {
+                max-width: 400px; /* Batasi lebar maksimum */
+            }
+        
+            .artikel-item-cover {
+                width: 400px;
+                height: 400px;
+            }
+        }
+
+        /* Media Query untuk ukuran layar tablet */
+        @media (max-width: 1024px) {
+            .hamburger {
+                display: flex;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+
+            .footer-container {
+                width: 70%;
+                max-width: 1200px;
+            }
+            
+            .artikel-lain-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .artikel-dots {
+                left: 20px;
+            }
+
+            .artikel-item {
+                max-width: 350px; /* Batasi lebar maksimum */
+            }
+        
+            .artikel-item-cover {
+                width: 350px;
+                height: 350px;
+            }
+
+            .back-button a {
+                font-size: 13px;
+                padding: 8px 20px;
+            }
+        }
+
+        @media (max-width:900px) {
+            .artikel-item {
+                max-width: 300px; /* Batasi lebar maksimum */
+            }
+        
+            .artikel-item-cover {
+                width: 300px;
+                height: 300px;
+            }
+        }
+
+        /* Media Query untuk ukuran layar mobile */
+        @media (max-width: 768px) {
+            .footer-container {
+                width: 85%;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 40px;
+                padding-top: 50px;
+            }
+            
+            /* Center footer left content */
+            .footer-left {
+                align-items: center;
+                width: 100%;
+            }
+            
+            /* Center social links */
+            .social-links {
+                justify-content: center;
+            }
+            
+            /* Center footer right content */
+            .footer-right {
+                align-items: center;
+                width: 100%;
+            }
+            
+            /* Center footer links */
+            .footer-links {
+                align-items: center;
+            }
+            
+            /* Adjust email spacing */
+            .footer-email {
+                margin-bottom: 10px;
+            }
+            
+            /* Adjust quicklinks title margin */
+            .quicklinks-title {
+                margin-bottom: 15px;
+            }
+            
+            /* Adjust copyright section */
+            .copyright {
+                padding-top: 30px;
+                margin-top: 40px;
+            }
+
+            .pdf-viewer-container {
+                padding: 10px; /* Kurangi padding di mobile */
+            }
+            
+            .pdf-viewer-container iframe {
+                height: 70vh; /* Gunakan viewport height agar lebih flexible */
+                min-height: 500px;
+            }
+            
+            /* Tambahan: Sembunyikan toolbar PDF di mobile */
+            .pdf-viewer-container iframe {
+                border: 2px solid #ddd;
+            }
+            
+            /* Footer section padding adjustments */
+            .footer-section {
+                padding: 20px 0 30px;
+            }
+
+            
+            .artikel-lain-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .artikel-item {
+                max-width: 300px; /* Batasi lebar maksimum */
+            }
+        
+            .artikel-item-cover {
+                width: 300px;
+                height: 400px;
+            }
+            
+            .artikel-title {
+                font-size: 28px;
+            }
+            
+            .artikel-content {
+                font-size: 14px;
+                line-height: 1.6;
+            }
+            
+            .artikel-dots {
+                left: 0;
+                position: relative;
+                display: flex;
+                justify-content: flex-start;
+                margin-bottom: 20px;
+            }
+
+            .back-button a {
+                font-size: 12px;
+                padding: 6px 15px;
+            }
+        }
+
+        body.loaded .artikel-section,
+        body.loaded .artikel-lain-section,
+        body.loaded .footer-section {
+            animation: slideUpAnimation 0.8s ease-out forwards;
+        }
+
+        /* Stagger delay */
+        body.loaded .artikel-section {
+            animation-delay: 0.1s;
+        }
+
+        body.loaded .artikel-lain-section {
+            animation-delay: 0.3s;
+        }
+
+        body.loaded .footer-section {
+            animation-delay: 0.5s;
+        }
+
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>
+        // Configure PDF.js worker
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    </script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="wrapper nav-container">
+            <div class="logo">
+                <a href="./index.html">ER</a>
+
+            </div>
+            <div class="nav-links">
+                <a href="./about.html">About</a>
+                <a href="./media.html">Media</a>
+                <a href="./testimonial.html">Testimonials</a>
+                <a href="./publikasi.html">Publications</a>
+                <a href="./library-login.html">Library</a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="mobile-nav">
+            <a href="./about.html">About</a>
+            <a href="./media.html">Media</a>
+            <a href="./testimonial.html">Testimonials</a>
+            <a href="./publikasi.html">Publications</a>
+            <a href="./library-login.html">Library</a>
+        </div>
+    </nav>
+
+    <section class="artikel-section">
+        <div class="wrapper">
+            <div class="back-button">
+                <a href="./publikasi.html">KEMBALI</a>
+            </div>
+            <div class="artikel-container">
+                <div class="artikel-header">
+                    <h1 id="artikel-title" class="artikel-title">PUBLIKASI TERBARU 2025</h1>
+                    <p id="artikel-by" class="artikel-by">BY ERNI RAHMAWATI</p>
+                </div>
+            </div>
+            <div id="pdf-viewer-container" class="pdf-viewer-container" style="display: none;">
+                <iframe id="pdf-frame" src=""></iframe>
+                <div class="pdf-download-button">
+                    <a id="pdf-download-link" href="" download>DOWNLOAD PDF</a>
+                </div>
+            </div>
+            <div id="artikel-content" class="artikel-content">
+                <!-- Konten artikel akan dimasukkan secara dinamis melalui JavaScript -->
+            </div>
+            <div class="artikel-share">
+                <p>THANK YOU FOR READING!</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Artikel Lain Section -->
+    <section class="artikel-lain-section">
+        <div class="wrapper">
+            <h2 class="artikel-lain-title">ARTIKEL LAIN DARI ERNI RAHMAWATI</h2>
+            <div id="artikel-lain-grid" class="artikel-lain-grid">
+                <!-- Artikel terkait akan dimasukkan secara dinamis melalui JavaScript -->
+            </div>
+        </div>
+    </section>
+    
+    <footer class="footer-section">
+        <div class="footer-container">
+            <div class="footer-left">
+                <h3 class="footer-name">ERNI RAHMAWATI</h3>
+                <div class="social-links">
+                        <!-- YouTube -->
+                        <a href="https://www.youtube.com/@ErniKriminologi" class="social-circle" target="_blank">
+                            <i class="fab fa-youtube" style="font-size: 24px;"></i>
+                        </a>
+                        
+                        <!-- TikTok -->
+                        <a href="https://www.tiktok.com/@erni.kriminologi" class="social-circle" target="_blank">
+                            <i class="fab fa-tiktok" style="font-size: 24px;"></i>
+                        </a>
+                        
+                        <!-- Instagram -->
+                        <a href="https://www.instagram.com/erni_kriminologi/?hl=en" class="social-circle" target="_blank">
+                            <i class="fab fa-instagram" style="font-size: 24px;"></i>
+                        </a>
+                </div>
+                <p class="footer-email">ERNIRAHMAWATI@GMAIL.COM</p>
+            </div>
+                
+            <div class="footer-right">
+                <h3 class="quicklinks-title">QUICK LINKS</h3>
+                <div class="footer-links">
+                    <a href="./about.html" class="footer-link">ABOUT</a>
+                    <a href="./media.html" class="footer-link">MEDIA</a>
+                    <a href="./publikasi.html" class="footer-link">PUBLICATIONS</a>
+                    <a href="./testimonial.html" class="footer-link">TESTIMONIALS</a>
+                    <a href="./library-login.html" class="footer-link">LIBRARY</a>
+                </div>
+            </div>
+        </div>
+            
+        <div class="copyright">
+            ©COPYRIGHT BY ERNI RAHMAWATI 2025
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navbar scroll effect
+            const navbar = document.querySelector('nav');
+            
+            function handleScroll() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            }
+            
+            window.addEventListener('scroll', handleScroll);
+            
+            // Trigger animasi saat page load
+            setTimeout(function() {
+                document.body.classList.add('loaded');
+            }, 100);
+            
+            // Check scroll position when page loads
+            handleScroll();
+
+            // Hamburger Menu Toggle
+            const hamburger = document.querySelector('.hamburger');
+            const mobileNav = document.querySelector('.mobile-nav');
+            
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                mobileNav.classList.toggle('active');
+                // Prevent scrolling when menu is open
+                document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : 'auto';
+            });
+            
+            // Close menu when clicking on a link
+            const mobileLinks = document.querySelectorAll('.mobile-nav a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    hamburger.classList.remove('active');
+                    mobileNav.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            });
+
+            // Fungsi untuk mendapatkan parameter dari URL
+            function getUrlParameter(name) {
+                name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+                const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+                const results = regex.exec(location.search);
+                return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+            }
+            
+            // Mendapatkan ID publikasi/riset dari parameter URL
+            const publikasiId = parseInt(getUrlParameter('id'));
+            
+            // Fungsi untuk melakukan fetch data dari JSON file
+            async function fetchData() {
+                try {
+                    const response = await fetch('./publikasi-riset-data.json');
+                    
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    
+                    const data = await response.json();
+                    return data.items;
+                } catch (error) {
+                    console.error('Error fetching data:', error);
+                    return [];
+                }
+            }
+            
+            // Fungsi untuk mengacak array (untuk artikel terkait)
+            function shuffleArray(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+                return array;
+            }
+
+            // Fungsi untuk generate cover image dari PDF
+            async function generatePdfCover(pdfUrl) {
+                try {
+                    // Load PDF
+                    const loadingTask = pdfjsLib.getDocument(pdfUrl);
+                    const pdf = await loadingTask.promise;
+                    
+                    // Get first page
+                    const page = await pdf.getPage(1);
+                    
+                    // Set canvas size
+                    const viewport = page.getViewport({ scale: 1.5 });
+                    const canvas = document.createElement('canvas');
+                    const context = canvas.getContext('2d');
+                    canvas.width = viewport.width;
+                    canvas.height = viewport.height;
+                    
+                    // Render page to canvas
+                    await page.render({
+                        canvasContext: context,
+                        viewport: viewport
+                    }).promise;
+                    
+                    // Convert canvas to image URL
+                    return canvas.toDataURL('image/png');
+                } catch (error) {
+                    console.error('Error generating PDF cover:', error);
+                    return null;
+                }
+            }
+            
+            // Fungsi untuk membuat item artikel lain
+            async function createArtikelItem(item) {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'artikel-item';
+                
+                // Tentukan cover image
+                let coverImageSrc = item.coverImage;
+                
+                // Jika coverImage null tapi ada pdfFile, generate dari PDF
+                if (!coverImageSrc && item.pdfFile) {
+                    coverImageSrc = await generatePdfCover(item.pdfFile);
+                }
+                
+                // Jika masih null, gunakan placeholder
+                if (!coverImageSrc) {
+                    coverImageSrc = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="450" height="450"%3E%3Crect fill="%233f2b96" width="450" height="450"/%3E%3C/svg%3E';
+                }
+                
+                itemDiv.innerHTML = `
+                    <div class="artikel-item-cover">
+                        <img src="${coverImageSrc}" alt="${item.title}">
+                    </div>
+                    <h3 class="artikel-item-title">${item.title}</h3>
+                    <p class="artikel-item-category">${item.category}</p>
+                `;
+                
+                // Event listener untuk mengklik artikel lain
+                itemDiv.addEventListener('click', function() {
+                    window.location.href = `./isi-publikasi-riset.html?id=${item.id}`;
+                });
+                
+                return itemDiv;
+            }
+            
+            // Fungsi untuk update meta tags
+            function updateMetaTags(item) {
+                // Update description meta tag
+                let descMeta = document.querySelector('meta[name="description"]');
+                if (!descMeta) {
+                    descMeta = document.createElement('meta');
+                    descMeta.name = 'description';
+                    document.head.appendChild(descMeta);
+                }
+                descMeta.content = item.description || 'Publikasi dan Riset oleh Erni Rahmawati';
+                
+                // Update Open Graph tags untuk social media
+                const ogTags = [
+                    { property: 'og:title', content: item.title },
+                    { property: 'og:description', content: item.description || '' },
+                    { property: 'og:type', content: 'article' }
+                ];
+                
+                ogTags.forEach(tag => {
+                    let meta = document.querySelector(`meta[property="${tag.property}"]`);
+                    if (!meta) {
+                        meta = document.createElement('meta');
+                        meta.setAttribute('property', tag.property);
+                        document.head.appendChild(meta);
+                    }
+                    meta.content = tag.content;
+                });
+            }
+
+            // Inisialisasi halaman
+            async function init() {
+                // Fetch data dari JSON file
+                const publikasiItems = await fetchData();
+                
+                // Cari item dengan ID yang sesuai
+                const currentItem = publikasiItems.find(item => item.id === publikasiId);
+                
+                if (currentItem) {
+                    // Update title, by dan konten artikel
+                    document.getElementById('artikel-title').textContent = currentItem.title;
+                    document.getElementById('artikel-by').textContent = 'BY ERNI RAHMAWATI';
+                    
+                    // Update document title dan meta tags
+                    document.title = `${currentItem.title} - Erni Rahmawati`;
+                    updateMetaTags(currentItem);
+                    
+                    // Cek apakah ada PDF file
+                    if (currentItem.pdfFile) {
+                        // Tampilkan PDF viewer
+                        const pdfContainer = document.getElementById('pdf-viewer-container');
+                        const pdfFrame = document.getElementById('pdf-frame');
+                        const pdfDownloadLink = document.getElementById('pdf-download-link');
+                        
+                        pdfContainer.style.display = 'block';
+                        
+                        // Set zoom berbeda untuk mobile dan desktop
+                        const isMobile = window.innerWidth <= 768;
+                        if (isMobile) {
+                            pdfFrame.src = currentItem.pdfFile + '#zoom=45&navpanes=0&scrollbar=1';
+                        } else {
+                            pdfFrame.src = currentItem.pdfFile;
+                        }
+                        pdfDownloadLink.href = currentItem.pdfFile;
+                        
+                        // Sembunyikan artikel content jika ada PDF
+                        document.getElementById('artikel-content').style.display = 'none';
+                    } else {
+                        // Tampilkan konten HTML jika tidak ada PDF
+                        document.getElementById('artikel-content').innerHTML = currentItem.content;
+                        document.getElementById('pdf-viewer-container').style.display = 'none';
+                    }
+                    
+                    // Filter dan acak artikel lain dengan kategori yang sama
+                    // namun bukan artikel yang sedang dibaca
+                    const relatedItems = publikasiItems
+                        .filter(item => item.id !== publikasiId)
+                        .sort(() => 0.5 - Math.random())
+                        .slice(0, 4);
+                    
+                    // Tampilkan artikel lain
+                    const artikelLainGrid = document.getElementById('artikel-lain-grid');
+                    
+                    // Render semua related items dengan Promise.all
+                    const artikelElements = await Promise.all(
+                        relatedItems.map(item => createArtikelItem(item))
+                    );
+                    
+                    artikelElements.forEach(element => {
+                        artikelLainGrid.appendChild(element);
+                    });
+                } else {
+                    // Jika item tidak ditemukan, kembali ke halaman utama
+                    window.location.href = './publikasi.html';
+                }
+            }
+
+            // Initialize the page
+            init();
+        });
+    </script>
+</body>
+</html>

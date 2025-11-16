@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publikasi & Riset - Erni Rahmawati</title>
+    <link rel="icon" type="image/png" href="./aset_gambar/aset_index/foto_erni_landingpage.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        /* Wrapper untuk alignment yang konsisten */
+        .wrapper {
+            width: 90%;
+            max-width: 1500px;
+            margin: 0 auto;
+        }
+        
+        /* Navbar Styling */
+        nav {
+            position: fixed; /* Ubah dari yang sebelumnya */
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background-color: #3f2b96; /* Default color is now blue */
+            padding: 30px 0;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo a {
+            color: #ffffff; /* Ubah dari white ke hitam */
+            text-decoration: none;
+            font-size: 24px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        
+
+        .logo:hover {
+            color: #3f2b96;
+            text-decoration: underline;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: white; /* Default color is now white */
+            text-decoration: none;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        nav.scrolled {
+            background-color: #ffffff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        nav.scrolled .logo a,
+        nav.scrolled .nav-links a {
+            color: #000000; /* Change to black when scrolled */
+        }
+
+        nav.scrolled .hamburger span {
+            background-color: #333; /* Change to black when scrolled */
+        }
+        
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            z-index: 1000;
+        }
+        
+        .hamburger span {
+            width: 30px;
+            height: 3px;
+            background-color: white; /* Default color is now white */
+            margin: 3px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 6px);
+        }
+
+        .hamburger.active span {
+            background-color: white !important; /* !important untuk memastikan prioritas styling */
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(8px, -6px);
+        }
+        
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100vh;
+            background-color: #3f2b96;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: right 0.5s ease;
+        }
+        
+        .mobile-nav.active {
+            right: 0;
+        }
+        
+        .mobile-nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 15px 0;
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-nav a:hover {
+            transform: translateX(-5px);
+        }
+
+
+
+        /* Publikasi Riset Section */
+        .publikasi-riset-section {
+            padding: 150px 0 80px; /* Memperbesar padding-top agar tidak tertutupi navbar */
+            background-color: #fff;
+            min-height: calc(100vh - 100px);
+        }
+        
+        .publikasi-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .publikasi-title {
+            font-size: 42px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+        
+        .publikasi-description {
+            font-size: 14px;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Filter Buttons */
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+        
+        .filter-button {
+            background-color: #000;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            border: none;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .filter-button.active {
+            background-color: #3f2b96;
+        }
+        
+        /* Items Grid */
+        .publikasi-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .publikasi-item {
+            margin-bottom: 20px;
+            opacity: 1;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+        
+
+        .publikasi-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
+        }
+
+        .publikasi-item::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            right: -15px;
+            bottom: -15px;
+            background: #f5f5f5; /* Warna background */
+            clip-path: polygon(
+                0% 5%, 
+                5% 0%, 
+                95% 0%, 
+                100% 5%, 
+                100% 95%, 
+                95% 100%, 
+                5% 100%, 
+                0% 95%
+            );
+            z-index: -1;
+            transition: all 0.3s ease;
+        }
+
+        .publikasi-item:hover::before {
+            background: #e8e8e8; /* Warna saat hover */
+        }
+        
+        .publikasi-item.hidden {
+            display: none;
+        }
+        
+        .pub-cover {
+            background-color: #3f2b96;
+            aspect-ratio: 1/1;
+            margin-bottom: 10px;
+        }
+        
+        .pub-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .pub-bullets {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 10px;
+        }
+        
+        .bullet {
+            width: 8px;
+            height: 8px;
+            background-color: #000;
+        }
+        
+        .pub-category {
+            text-transform: uppercase;
+            font-size: 12px;
+            font-weight: bold;
+            color: #777;
+            margin-bottom: 5px;
+        }
+        
+        .pub-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .pub-description {
+            font-size: 12px;
+            color: #666;
+            line-height: 1.5;
+            /* Limit to 3 lines with ellipsis */
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+        
+        .page-button {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 4px;
+            background-color: #000;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .page-button.active {
+            background-color: #3f2b96;
+        }
+
+        .page-button:not(.active):not(.last) {
+            background-color: #000; /* Warna hitam untuk tombol yang tidak aktif dan bukan tombol terakhir */
+        }
+        
+        .page-button.last {
+            background-color: #000000;
+            color: #ffffff;
+        }
+        
+        /* Loading State */
+        .loading {
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        .publikasi-riset-section,
+        .footer-section {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        @keyframes slideUpAnimation {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /*FOOTER SECTION */
+        .footer-section {
+            background-color: #3f2b96;
+            padding: 20px 0 30px; /* Padding atas lebih besar untuk memberikan ruang bagi foto */
+            width: 100%;
+            color: rgb(255, 255, 255);
+            position: relative;
+            margin-top: 0px; /* Membuat footer overlap dengan bekerjasama section */
+        }
+
+        .footer-container {
+            width: 60%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            padding-top: 80px; /* Ruang tambahan setelah foto */
+        }
+
+        .footer-left {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .footer-name {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .social-circle {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 20%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-circle:hover {
+            background-color: #25fc37;
+            transform: scale(1.1);
+        }
+
+        .social-circle i {
+            color: rgb(255, 255, 255);
+            transition: color 0.3s ease;
+        }
+
+        .social-circle:hover i {
+            color: #3f2b96;
+        }
+
+        .footer-email {
+            font-size: 12px;
+            margin-bottom: 20px;
+        }
+
+        .footer-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .quicklinks-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-link {
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-link:hover {
+            opacity: 0.8;
+        }
+
+        .copyright {
+            width: 90%;
+            max-width: 1200px;
+            margin: 50px auto 0;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        @media (max-width: 1024px) {
+            .hamburger {
+                display: flex;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+
+            .footer-container {
+                width: 70%;
+                max-width: 1200px;
+            }
+
+            .publikasi-riset-section {
+                padding: 140px 0 80px; /* Sedikit menyesuaikan padding untuk tablet */
+            }
+
+            .publikasi-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Media Query untuk ukuran layar mobile */
+        @media (max-width: 768px) {
+
+            .publikasi-riset-section {
+                padding: 130px 0 80px; /* Sedikit menyesuaikan padding untuk mobile */
+            }
+
+            .publikasi-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .publikasi-title {
+                font-size: 32px;
+            }
+            
+            .filter-buttons {
+                flex-wrap: wrap;
+            }
+
+            .footer-container {
+                width: 85%;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 40px;
+                padding-top: 50px;
+            }
+            
+            /* Center footer left content */
+            .footer-left {
+                align-items: center;
+                width: 100%;
+            }
+            
+            /* Center social links */
+            .social-links {
+                justify-content: center;
+            }
+            
+            /* Center footer right content */
+            .footer-right {
+                align-items: center;
+                width: 100%;
+            }
+            
+            /* Center footer links */
+            .footer-links {
+                align-items: center;
+            }
+            
+            /* Adjust email spacing */
+            .footer-email {
+                margin-bottom: 10px;
+            }
+            
+            /* Adjust quicklinks title margin */
+            .quicklinks-title {
+                margin-bottom: 15px;
+            }
+            
+            /* Adjust copyright section */
+            .copyright {
+                padding-top: 30px;
+                margin-top: 40px;
+            }
+            
+            /* Footer section padding adjustments */
+            .footer-section {
+                padding: 20px 0 30px;
+            }
+        }
+
+        body.loaded .publikasi-riset-section,
+        body.loaded .footer-section {
+            animation: slideUpAnimation 0.8s ease-out forwards;
+        }
+
+        /* Stagger delay */
+        body.loaded .publikasi-riset-section {
+            animation-delay: 0.1s;
+        }
+
+        body.loaded .footer-section {
+            animation-delay: 0.3s;
+        }
+    </style>
+    <!-- Tambahkan sebelum closing </head> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="wrapper nav-container">
+            <div class="logo">
+                <a href="./index.html">ER</a>
+
+            </div>
+            <div class="nav-links">
+                <a href="./about.html">About</a>
+                <a href="./media.html">Media</a>
+                <a href="./testimonial.html">Testimonials</a>
+                <a href="./publikasi.html">Publications</a>
+                <a href="./library-login.html">Library</a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="mobile-nav">
+            <a href="./about.html">About</a>
+            <a href="./media.html">Media</a>
+            <a href="./testimonial.html">Testimonials</a>
+            <a href="./publikasi.html">Publications</a>
+            <a href="./library-login.html">Library</a>
+        </div>
+    </nav>
+
+
+    <section class="publikasi-riset-section">
+        <div class="wrapper">
+            <div class="publikasi-header">
+                <h2 class="publikasi-title">PUBLIKASI & RISET</h2>
+            </div>
+            
+            <div class="filter-buttons">
+                <button class="filter-button active" data-category="all">All</button>
+                <button class="filter-button" data-category="publikasi">Publikasi</button>
+            </div>
+            
+            <div id="loadingState" class="loading">
+                <p>Loading publikasi</p>
+            </div>
+            
+            <div class="publikasi-grid" id="publikasiGrid" style="display: none;">
+                <!-- Items will be dynamically added here by JavaScript -->
+            </div>
+            
+            <div class="pagination" id="pagination" style="display: none;">
+                <!-- Pagination buttons will be added here -->
+            </div>
+        </div>
+    </section>
+    
+    <!-- Main content would go here -->
+    
+    <footer class="footer-section">
+        <div class="footer-container">
+            <div class="footer-left">
+                <h3 class="footer-name">ERNI RAHMAWATI</h3>
+                <div class="social-links">
+                        <!-- YouTube -->
+                        <a href="https://www.youtube.com/@ErniKriminologi" class="social-circle" target="_blank">
+                            <i class="fab fa-youtube" style="font-size: 24px;"></i>
+                        </a>
+                        
+                        <!-- TikTok -->
+                        <a href="https://www.tiktok.com/@erni.kriminologi" class="social-circle" target="_blank">
+                            <i class="fab fa-tiktok" style="font-size: 24px;"></i>
+                        </a>
+                        
+                        <!-- Instagram -->
+                        <a href="https://www.instagram.com/erni_kriminologi/?hl=en" class="social-circle" target="_blank">
+                            <i class="fab fa-instagram" style="font-size: 24px;"></i>
+                        </a>
+                </div>
+                <p class="footer-email">ERNIRAHMAWATI@GMAIL.COM</p>
+            </div>
+                
+            <div class="footer-right">
+                <h3 class="quicklinks-title">QUICK LINKS</h3>
+                <div class="footer-links">
+                    <a href="./about.html" class="footer-link">ABOUT</a>
+                    <a href="./media.html" class="footer-link">MEDIA</a>
+                    <a href="./publikasi.html" class="footer-link">PUBLICATIONS</a>
+                    <a href="./testimonial.html" class="footer-link">TESTIMONIALS</a>
+                    <a href="./library-login.html" class="footer-link">LIBRARY</a>
+                </div>
+            </div>
+        </div>
+            
+        <div class="copyright">
+            ©COPYRIGHT BY ERNI RAHMAWATI 2025
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navbar = document.querySelector('nav');
+            
+            function handleScroll() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            }
+            
+            window.addEventListener('scroll', handleScroll);
+            
+            // Check scroll position when page loads
+            handleScroll();
+
+            setTimeout(function() {
+                document.body.classList.add('loaded');
+            }, 80);
+
+            // Hamburger Menu Toggle
+            const hamburger = document.querySelector('.hamburger');
+            const mobileNav = document.querySelector('.mobile-nav');
+
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                mobileNav.classList.toggle('active');
+                // Prevent scrolling when menu is open
+                document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : 'auto';
+            });
+
+            // Close menu when clicking on a link
+            const mobileLinks = document.querySelectorAll('.mobile-nav a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    hamburger.classList.remove('active');
+                    mobileNav.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            });
+
+            // Publikasi & Riset functionality
+            const grid = document.getElementById('publikasiGrid');
+            const paginationContainer = document.getElementById('pagination');
+            const filterButtons = document.querySelectorAll('.filter-button');
+            const loadingState = document.getElementById('loadingState');
+
+            // Variables for state
+            const itemsPerPage = 9;
+            let currentPage = 1;
+            let activeCategory = 'all';
+            let publikasiRisetItems = [];
+
+            // Async function to fetch data from external JSON file
+            async function fetchData() {
+                try {
+                    // In a real implementation, adjust the path to your JSON file
+                    const response = await fetch('./publikasi-riset-data.json');
+                    
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    
+                    const data = await response.json();
+                    return data.items;
+                } catch (error) {
+                    console.error('Error fetching data:', error);
+                    // Display error message to user if needed
+                    return [];
+                }
+            }
+
+            // Initialize the page
+            async function init() {
+                // Fetch data from JSON file
+                publikasiRisetItems = await fetchData();
+                
+                // Hide loading state and show content
+                loadingState.style.display = 'none';
+                grid.style.display = 'grid';
+                
+                // Render items and setup event listeners
+                renderItems();
+                setupFilterButtons();
+                
+                // Show pagination if needed
+                if (Math.ceil(publikasiRisetItems.length / itemsPerPage) > 1) {
+                    paginationContainer.style.display = 'flex';
+                }
+            }
+
+            // Render the items based on current filter and page
+            // Render the items based on current filter and page
+            async function renderItems() {
+                // Clear the grid
+                grid.innerHTML = '';
+                
+                // Show loading
+                grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center;">Loading...</p>';
+                
+                // Filter items based on active category
+                const filteredItems = activeCategory === 'all' 
+                    ? publikasiRisetItems 
+                    : publikasiRisetItems.filter(item => item.category === activeCategory);
+                
+                // Calculate pagination
+                const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
+                const startIndex = (currentPage - 1) * itemsPerPage;
+                const endIndex = startIndex + itemsPerPage;
+                const currentItems = filteredItems.slice(startIndex, endIndex);
+                
+                // Clear loading
+                grid.innerHTML = '';
+                
+                // Render items (pakai Promise.all untuk render semua sekaligus)
+                const itemElements = await Promise.all(
+                    currentItems.map(item => createItemElement(item))
+                );
+                
+                itemElements.forEach(element => {
+                    grid.appendChild(element);
+                });
+                
+                // Update pagination
+                renderPagination(totalPages);
+            }
+
+            // Create a single item element
+            // Create a single item element
+            // Create a single item element
+            async function createItemElement(item) {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'publikasi-item';
+                itemDiv.style.cursor = 'pointer';
+                
+                // Tentukan cover image
+                let coverImageSrc = item.coverImage;
+                
+                // Jika coverImage null tapi ada pdfFile, generate dari PDF
+                if (!coverImageSrc && item.pdfFile) {
+                    coverImageSrc = await generatePdfCover(item.pdfFile);
+                }
+                
+                // Jika masih null, gunakan placeholder
+                if (!coverImageSrc) {
+                    coverImageSrc = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="400"%3E%3Crect fill="%233f2b96" width="400" height="400"/%3E%3C/svg%3E';
+                }
+                
+                itemDiv.innerHTML = `
+                    <div class="pub-cover">
+                        <img src="${coverImageSrc}" alt="${item.title}">
+                    </div>
+                    <div class="pub-bullets">
+                        <div class="bullet"></div>
+                        <div class="bullet"></div>
+                    </div>
+                    <div class="pub-category">${item.category}</div>
+                    <h3 class="pub-title">${item.title}</h3>
+                    <p class="pub-description">${item.description}</p>
+                `;
+                
+                itemDiv.addEventListener('click', function() {
+                    window.location.href = `./isi-publikasi-riset.html?id=${item.id}`;
+                });
+                
+                return itemDiv;
+            }
+
+            // Fungsi untuk generate cover image dari PDF
+            async function generatePdfCover(pdfUrl) {
+                try {
+                    // Load PDF
+                    const loadingTask = pdfjsLib.getDocument(pdfUrl);
+                    const pdf = await loadingTask.promise;
+                    
+                    // Get first page
+                    const page = await pdf.getPage(1);
+                    
+                    // Set canvas size
+                    const viewport = page.getViewport({ scale: 1.5 });
+                    const canvas = document.createElement('canvas');
+                    const context = canvas.getContext('2d');
+                    canvas.width = viewport.width;
+                    canvas.height = viewport.height;
+                    
+                    // Render page to canvas
+                    await page.render({
+                        canvasContext: context,
+                        viewport: viewport
+                    }).promise;
+                    
+                    // Convert canvas to image URL
+                    return canvas.toDataURL('image/png');
+                } catch (error) {
+                    console.error('Error generating PDF cover:', error);
+                    return null;
+                }
+            }
+
+            // Render pagination buttons with fixed styling
+            function renderPagination(totalPages) {
+                paginationContainer.innerHTML = '';
+                
+                if (totalPages <= 1) {
+                    paginationContainer.style.display = 'none';
+                    return;
+                } else {
+                    paginationContainer.style.display = 'flex';
+                }
+                
+                for (let i = 1; i <= totalPages; i++) {
+                    const button = document.createElement('button');
+                    
+                    // Simplify the class assignment based on exact conditions
+                    if (i === currentPage) {
+                        // Current page gets active class and blue background
+                        button.className = 'page-button active';
+                        button.style.backgroundColor = '#3f2b96'; // Blue
+                    } else if (i === totalPages) {
+                        // Last page gets last class and gray background
+                        button.className = 'page-button last';
+                        button.style.backgroundColor = '#000'; // Gray
+                    } else {
+                        // Other pages get just the base class and black background
+                        button.className = 'page-button';
+                        button.style.backgroundColor = '#000'; // Black
+                    }
+                    
+                    button.textContent = i;
+                    
+                    button.addEventListener('click', function() {
+                        if (i !== currentPage) {
+                            // Update current page
+                            currentPage = i;
+                            
+                            // Re-render items (which will also re-render pagination)
+                            renderItems();
+                            
+                            // Scroll to top of page
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }
+                    });
+                    
+                    paginationContainer.appendChild(button);
+                }
+            }
+
+            // Fungsi untuk memperbarui UI pagination secara manual
+            // Ini sebagai backup jika pendekatan normal masih bermasalah
+            function updatePaginationUI() {
+                // Reset all pagination buttons
+                document.querySelectorAll('.page-button').forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.classList.contains('last')) {
+                        btn.style.backgroundColor = '#000'; // Gray for last button
+                    } else {
+                        btn.style.backgroundColor = '#000'; // Black for other buttons
+                    }
+                });
+                
+                // Find the button for the current page and make it active
+                const buttons = document.querySelectorAll('.page-button');
+                if (buttons.length >= currentPage) {
+                    buttons[currentPage - 1].classList.add('active');
+                    buttons[currentPage - 1].style.backgroundColor = '#3f2b96'; // Blue
+                }
+            }
+
+            // Setup filter buttons
+            function setupFilterButtons() {
+                filterButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        // Remove active class from all buttons
+                        filterButtons.forEach(btn => btn.classList.remove('active'));
+                        
+                        // Add active class to clicked button
+                        button.classList.add('active');
+                        
+                        // Update active category
+                        activeCategory = button.dataset.category;
+                        
+                        // Reset to first page when changing category
+                        currentPage = 1;
+                        
+                        // Re-render items
+                        renderItems();
+                    });
+                });
+            }
+
+            // Initialize on page load
+            init();
+        });
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+{
+    "items": [
+      {
+        "id": 1,
+        "category": "publikasi",
+        "title": "Integrated Remedy System",
+        "description": "",
+        "coverImage": null,
+        "pdfFile": "./aset_publikasi/disertasi_erni_rahmawati.pdf"
+      },
+      {
+        "id": 2,
+        "category": "publikasi",
+        "title": "Miscarriage of Justice in Indonesia",
+        "description": "",
+        "coverImage": null,
+        "pdfFile": "./aset_publikasi/miscarriageofjustice_erni_rahmawati.pdf"
+      },
+      {
+        "id": 3,
+        "category": "publikasi",
+        "title": "White Supremacy and Structural Racism",
+        "description": "",
+        "coverImage": null,
+        "pdfFile": "./aset_publikasi/whitesupremacy_erni_rahmawati.pdf"
+      },
+      {
+        "id": 4,
+        "category": "publikasi",
+        "title": "Vacuum Effect",
+        "description": "",
+        "coverImage": null,
+        "pdfFile": "./aset_publikasi/vacuumeffect_erni_rahmawati.pdf"
+      },
+      {
+        "id": 5,
+        "category": "publikasi",
+        "title": "Strategi Pemulihan & Pengendalian Sosial",
+        "description": "",
+        "coverImage": null,
+        "pdfFile": "./aset_publikasi/strategipemulihan_erni_rahmawati.pdf"
+      },
+      {
+        "id": 6,
+        "category": "publikasi",
+        "title": "Teknik-Teknik Terjemahan",
+        "description": "",
+        "coverImage": null,
+        "pdfFile": "./aset_publikasi/teknikterjemahan_erni_rahmawati.pdf"
+      }
+    ]
+  }
